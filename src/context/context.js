@@ -14,7 +14,7 @@ export const AuthContextProvider = ({children}) => {
     const log = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user)
     });
-
+    console.log(log)
     return () => {
       log(); 
     };
