@@ -19,6 +19,29 @@ button {
   cursor: pointer;
 }
 
+.flex {
+  display: flex;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.alit {
+  align-items: center;
+}
+
+.hey {
+  display: flex;
+  height: 100%;
+}
+
+.side {
+  width: fit-content;
+  border-right: 1px solid #5c5a5a;
+  height: 100vh;
+}
+
 .link {
   color: #fff;
   text-decoration: none;
@@ -129,7 +152,7 @@ button {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .left {
@@ -145,11 +168,32 @@ button {
 }
 
 .center {
-  flex: 1.5;
+  flex: 2;
   overflow: auto;
   height: 98vh;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   margin-top: 2vh;
+}
+
+.msg {
+  margin: 0 10%;
+  display: flex;
+  background: #000000;
+  height: 96vh;
+  flex: 2;
+  border: 1px solid #5c5a5a;
+}
+
+.msgCnt {
+  flex: 1.2;
+  border: 1px solid #5c5a5a;
+  height: 100%;
+}
+
+.msgCnt2 {
+  flex: 2;
+  height: 100%;
+  position: relative;
 }
 
 .cent {
@@ -172,6 +216,12 @@ button {
   font-size: 16px;
 }
 
+.navUl{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .navUl li {
   font-family: 'Poppins' ,sans-serif;
   display: flex;
@@ -182,14 +232,24 @@ button {
 }
 
 .navUl li:hover {
+  color: #279bdf;
   background: #292929;
   border-radius: 5rem;
   transition: 0.2s ease-in-out;
 }
 
+.active {
+  color: #279bdf;
+}
+
+.active li {
+  background: #292929;
+  border-radius: 5rem;
+}
+
 .nav {
   padding: 2rem 1.5rem;
-  height: 100vh;
+  height: 100%;
 }
 
 .navUl2 li {
@@ -205,6 +265,7 @@ button {
   background: #292929;
   border-radius: 5rem;
   transition: 0.2s ease-in-out;
+  color: #279bdf;
 }
 
 .navUl2 .signOut {
@@ -254,8 +315,8 @@ button {
 }
 
 .pImg2 {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -284,4 +345,164 @@ button {
 
 .profileName2 {
   opacity: 0.5;
+}
+
+
+.msgPrv {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.msgCnts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
+  overflow: auto;
+  scrollbar-color: red blue;
+}
+
+.msgCnts::-webkit-scrollbar {
+  color: #447eeb;
+  background-color: #279bdf;
+  background: #279bdf;
+  /* -ms-scrollbar-track-color: #279bdf; */
+  /* scrollbar-arrow-color: #447eeb; */
+  /* scrollbar-base-color: #000000; */
+}
+
+.myName {
+  text-align: center;
+  border-bottom: 1px solid #5c5a5a;
+  padding: 5%;
+  font-family: 'poppins', sans-serif;
+  font-size: 1.2rem;
+  height: 10%;
+}
+
+.msgHead {
+  border-bottom: 1px solid #5c5a5a;
+  /* display: flex; */
+  justify-content: center;
+  padding: 5%;
+  height: 10%;
+}
+
+.lstmsg {
+  opacity: 0.5;
+}
+
+.msgBg {
+  padding: 1rem;
+  overflow: auto;
+  height: 90%;
+}
+
+.msgBgs {
+  height: 80%;
+  overflow: auto;
+  position: relative;
+}
+
+.msgBg::-webkit-scrollbar, .msgBgs::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.msgBg::-webkit-scrollbar-thumb, .msgBgs::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+
+.inp {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  height: 10%;
+  /* width: 100%;
+  margin: auto; */
+}
+
+.inp div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.input {
+  /* position: absolute; */
+  bottom: 3%;
+  width: 90%;
+  padding: 2%;
+  background-color: #000000;
+  border-radius: 5rem;
+  border: 1px solid #5c5a5a;
+  color: #fff;
+}
+
+.chatCnt {
+  display: flex;
+  align-items: center;
+  /* flex-direction: row-reverse; */
+}
+
+.chatCnt2 {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.chat {
+  background: #333333;
+  border-radius: 0 1rem 1rem 1rem;
+  padding: 2%;
+}
+
+.chatCnt2 .chat {
+  border-radius: 1rem 0 1rem 1rem;
+}
+
+.msgBgs div {
+  margin-bottom: 1%;
+}
+
+.searchDiv {
+  margin: 0 10%;
+  width: 30%;
+  border: 1px solid #5c5a5a;
+  padding: 1%;
+}
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search {
+  width: 90%;
+  border-radius: 2%;
+  background: #333333;
+  padding: 2%;
+  border-radius: 5rem;
+  border: 1px solid #447eeb;
+}
+
+.searchUser {
+  padding: 5%;
 }
