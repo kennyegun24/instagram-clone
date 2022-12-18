@@ -6,9 +6,9 @@ import Rightside from '../pages/Rightside';
 const Homepage = () => {
   return (
     <div className='home'>
-      <div className="left">
+      {/* <div className="left">
         <Leftside className="left"/>
-      </div>
+      </div> */}
       <div className='center'>
         <Center />
         <Center />
