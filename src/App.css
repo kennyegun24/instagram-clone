@@ -27,8 +27,20 @@ button {
   gap: 1rem;
 }
 
+.gapBg {
+  gap: 10%;
+}
+
+.gap2 {
+  gap: 1.5rem;
+}
+
 .alit {
   align-items: center;
+}
+
+.column {
+  flex-direction: column;
 }
 
 .hey {
@@ -405,6 +417,7 @@ button {
   height: 80%;
   overflow: auto;
   position: relative;
+  padding: 2%;
 }
 
 .msgBg::-webkit-scrollbar, .msgBgs::-webkit-scrollbar {
@@ -505,4 +518,21 @@ button {
 
 .searchUser {
   padding: 5%;
+}
+
+
+.userProfCont {
+  margin: 0 10%;
+  padding: 2%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.pImg3 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.profNameFlls {
+
 }
