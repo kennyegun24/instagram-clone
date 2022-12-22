@@ -3,10 +3,10 @@ import Userprof from '../components/center/Userprof'
 
 const UserProfile = () => {
   return (
-    <div className='home'>
-      <p className='msgCnt'>
+    <div className='home flex'>
+      <div className='msgCnt'>
         <Userprof />
-      </p>
+      </div>
     </div>
   )
 }

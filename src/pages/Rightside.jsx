@@ -1,24 +1,44 @@
-// import { collection, doc, onSnapshot } from 'firebase/firestore'
-import React, { useContext } from 'react'
-import img from '../assets/R.jfif'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../context/context'
-// import { db } from '../firebase'
+import { UserContext } from '../context/searchUser'
+import { db } from '../firebase'
 const Rightside = () => {
   const {currentUser} = useContext(AuthContext)
-  // const citiesRef = collection(db, "userchat");
-  // const unSub = onSnapshot(doc(db, "userchat", currentUser.uid))
+  const {data} = useContext(UserContext)
+  const {dispatch} = useContext(UserContext)
+  let darray = null;
 
-  // console.log(unSub)
-// console.log({currentUser})
+  const user = async () => {
+    const citiesRef = collection(db, "users");
+    const q = query(citiesRef, where("uid", "==", currentUser.uid));
+
+    try {
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        darray = doc.data()
+      })
+      dispatch({type:"Switch_User", payload: darray})
+  
+    } catch(err) {
+        //  setErr(true)
+      }
+  }
+
+  useEffect(() => {
+    user()
+  }, [])
+  console.log(data)
+
   return (
-    <div className='profile'>
+    <div className='profile flex alit'>
       <img src={currentUser.photoURL} className="pImg2" alt="" />
       <div className='profileName'>
         <p>
           {currentUser.displayName}
         </p>
         <p className='profileName2'>
-          Kenny Elias
+          {data.user.name}
         </p>
       </div>
     </div>

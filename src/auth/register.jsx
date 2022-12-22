@@ -43,6 +43,7 @@ export const Register = () => {
           });
           // THIS IS TO STORE AND INITIATE NEW REGS CHATS COLLECTIONS IN DATABASE
           await setDoc(doc(db, "userchat", response.user.uid), {});
+          await setDoc(doc(db, "follow", response.user.uid), {follow:[]})
           navigation('/');
         }catch(err) {
           setErr(true)
@@ -56,9 +57,9 @@ export const Register = () => {
 
 
   return (
-    <div className='RegDiv'>
-      <div className="flx">
-        <div className='RegDivSm'>
+    <div className='RegDiv flex'>
+      <div className="flex column gap">
+        <div className='RegDivSm flex column'>
           <h1 className='head'>Kenstagram</h1>
           <h3 className='signUpIntro'>Sign up to see photo and videos from your friends</h3>
           <button className='lgBtn'>
@@ -67,13 +68,13 @@ export const Register = () => {
           <span className='or'>
             OR
           </span>
-          <form className='regForm' onSubmit={register}>
+          <form className='regForm flex column' onSubmit={register}>
             <input type="name" placeholder='Full Name'/>
             <input type="email" placeholder='Enter your Email'/>
             <input type="name" placeholder='Enter Username'/>
             <input type="password" placeholder='Password'/>
             <input type="file" />
-            <div className="terms">
+            <div className="terms flex column">
               <p className='info'>People who use our service may have uploaded your contact information to instagram. Learn More</p>
               <p className='info'>By signing up, you agree to our Terms, Privcy and Cookies policy.</p>
             </div>

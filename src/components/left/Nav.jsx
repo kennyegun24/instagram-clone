@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom'
 import {FaBars, FaCompass, FaHome, FaPowerOff, FaRegPaperPlane, FaSearch} from 'react-icons/fa'
 import { AuthContext } from '../../context/context'
 import { signOut } from 'firebase/auth'
@@ -9,9 +9,17 @@ import img from '../../assets/R.jfif'
 
 const Nav = () => {
   const {currentUser} = useContext(AuthContext)
+
+  const navigate = useNavigate()
+
   const openUp = () => {
     const sign = document.querySelector('.signOut')
     sign.classList.toggle('show')
+  }
+
+  const signout = () => {
+    signOut(auth)
+    navigate('/')
   }
 
   return (
@@ -20,7 +28,7 @@ const Nav = () => {
         <h1 className='headNav'>
           Kenstagram
         </h1>
-        <ul className='navUl'>
+        <ul className='navUl flex column'>
           <NavLink to="/" className='link'>
             <li>
               <FaHome className='icon' /> Home
@@ -40,18 +48,25 @@ const Nav = () => {
             </li>
           </NavLink>
 
-          <NavLink to={`/${currentUser.displayName}`} className='link'>
-            <li>
-              <img src={currentUser.photoURL} className='pImg' alt="" /> Profile
-            </li>
-          </NavLink>
+          {/* <div onClick={click}>
+            <NavLink to={`/${data.user.uid}`} className='link' >
+              <li>
+                <img src={data.user.photoURL} className='pImg' alt="" /> Profile
+              </li>
+            </NavLink>
+          </div> */}
+          <NavLink to={`/${currentUser.uid}`} className='link' >
+              <li>
+                <img src={currentUser.photoURL} className='pImg' alt="" /> Profile
+              </li>
+            </NavLink>
         </ul>
 
         <ul className='navUl2'>
           <li onClick={openUp}>
             <FaBars className='icon' /> More
           </li>
-          <li onClick={() => signOut(auth)} className='signOut'>
+          <li onClick={signout} className='signOut'>
             <FaPowerOff className='icon' /> Sign Out
           </li>
         </ul>

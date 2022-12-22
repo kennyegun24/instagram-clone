@@ -5,10 +5,7 @@ import Rightside from '../pages/Rightside';
 
 const Homepage = () => {
   return (
-    <div className='home'>
-      {/* <div className="left">
-        <Leftside className="left"/>
-      </div> */}
+    <div className='flex home'>
       <div className='center'>
         <Center />
         <Center />

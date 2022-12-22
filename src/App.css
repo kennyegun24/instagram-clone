@@ -43,9 +43,29 @@ button {
   flex-direction: column;
 }
 
-.hey {
-  display: flex;
-  height: 100%;
+.poppins {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.fnt12 {
+  font-size: 15px;
+}
+
+.fnt15 {
+  font-size: 15px;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #5c5a5a;
+}
+
+.middle {
+  justify-content: center;
+  height: 70vh;
+  opacity: 0.5;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .side {
@@ -64,7 +84,6 @@ button {
 }
 
 .RegDiv {
-  display: flex;
   justify-content: center;
   text-align: center;
   font-family: sans-serif;
@@ -72,8 +91,6 @@ button {
 }
 
 .RegDivSm {
-  display: flex;
-  flex-direction: column;
   gap: 1.4rem;
   width: 350px;
   border: 1px solid #5c5a5a;
@@ -82,8 +99,6 @@ button {
 }
 
 .regForm {
-  display: flex;
-  flex-direction: column;
   gap: 0.6rem;
 }
 
@@ -108,8 +123,6 @@ button {
 }
 
 .terms {
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
   line-height: 20px;
 }
@@ -153,15 +166,7 @@ button {
   padding: 2rem;
 }
 
-.flx {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-
 .home {
-  display: flex;
   align-items: flex-start;
   width: 100%;
   height: 100%;
@@ -183,13 +188,11 @@ button {
   flex: 2;
   overflow: auto;
   height: 98vh;
-  /* margin-bottom: 1rem; */
   margin-top: 2vh;
 }
 
 .msg {
   margin: 0 10%;
-  display: flex;
   background: #000000;
   height: 96vh;
   flex: 2;
@@ -229,8 +232,6 @@ button {
 }
 
 .navUl{
-  display: flex;
-  flex-direction: column;
   gap: 0.5rem;
 }
 
@@ -294,8 +295,6 @@ button {
 }
 
 .post {
-  display: flex;
-  flex-direction: column;
   border: 1px solid #a7a6a6;
   border-radius: 1rem;
   background-color: #000000;
@@ -304,20 +303,12 @@ button {
 }
 
 .postHead {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 1rem;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
   border-bottom: 1px solid #a7a6a6;
-}
-
-.postHeadSm {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 }
 
 .pImg {
@@ -337,17 +328,13 @@ button {
 }
 
 .postIcons {
-  display: flex;
-  gap: 1rem;
   font-size: 20px;
   padding: 0.5rem;
   color: #fff;
 }
 
 .profile {
-  display: flex;
   gap: 5%;
-  align-items: center;
 }
 
 .profileName {
@@ -359,32 +346,19 @@ button {
   opacity: 0.5;
 }
 
-
-.msgPrv {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
 .msgCnts {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 1rem;
-  overflow: auto;
-  scrollbar-color: red blue;
+  margin-bottom: 1%;
+  padding: 1%;
 }
 
-.msgCnts::-webkit-scrollbar {
+/* .msgCnts::-webkit-scrollbar {
   color: #447eeb;
   background-color: #279bdf;
   background: #279bdf;
-  /* -ms-scrollbar-track-color: #279bdf; */
-  /* scrollbar-arrow-color: #447eeb; */
-  /* scrollbar-base-color: #000000; */
-}
+  width: 0.5rem;
+} */
 
 .myName {
   text-align: center;
@@ -397,7 +371,6 @@ button {
 
 .msgHead {
   border-bottom: 1px solid #5c5a5a;
-  /* display: flex; */
   justify-content: center;
   padding: 5%;
   height: 10%;
@@ -428,15 +401,8 @@ button {
   background-color: white;
 }
 
-
 .inp {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   height: 10%;
-  /* width: 100%;
-  margin: auto; */
 }
 
 .inp div {
@@ -450,14 +416,9 @@ button {
 
 .form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
 }
 
 .input {
-  /* position: absolute; */
   bottom: 3%;
   width: 90%;
   padding: 2%;
@@ -465,12 +426,6 @@ button {
   border-radius: 5rem;
   border: 1px solid #5c5a5a;
   color: #fff;
-}
-
-.chatCnt {
-  display: flex;
-  align-items: center;
-  /* flex-direction: row-reverse; */
 }
 
 .chatCnt2 {
@@ -490,7 +445,7 @@ button {
 }
 
 .msgBgs div {
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 
 .searchDiv {
@@ -502,9 +457,6 @@ button {
 
 .searchForm {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .search {
@@ -520,6 +472,10 @@ button {
   padding: 5%;
 }
 
+.searchUser:hover {
+  background: #5c5a5a;
+  border-radius: 5rem;
+}
 
 .userProfCont {
   margin: 0 10%;
@@ -533,6 +489,10 @@ button {
   border-radius: 50%;
 }
 
-.profNameFlls {
-
+.msgFollow span{
+  background: #fff;
+  color: #000000;
+  font-weight: 600;
+  border-radius: 5rem;
+  padding: 3%;
 }

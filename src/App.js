@@ -10,16 +10,20 @@ import Leftside from './pages/Leftside';
 import Messages from './pages/Messages';
 import UserProfile from './pages/userProfile';
 import Search from './components/left/Search';
+import { UserContext } from './context/searchUser';
+import SecUserProfile from './components/center/secUserProfile';
 
 function App() {
   const {currentUser} = useContext(AuthContext)
+  const {data} = useContext(UserContext)
+  // console.log(data.user)
 
   return (
     <div className="App">
       <BrowserRouter>
             {currentUser ? 
             <div className='center'>
-              <div className='hey' >
+              <div className='flex h100' >
                 <div className='side'>
                   <Leftside />
                 </div>
@@ -32,7 +36,8 @@ function App() {
                     <Route path='login' element={<Login />} />
                     <Route path='messages' element={<Messages />} />
                     <Route path='search' element={<Search />} />
-                    <Route path={currentUser ? `${currentUser.displayName}` : '/'} element={<UserProfile />} />
+                    <Route path={currentUser ? `${currentUser.uid}` : '/'} element={<UserProfile />} />
+                    <Route path={data ? `${data.user.uid}` : '/'} element={<SecUserProfile />} />
                   </Route>
                 </Routes>
               </div>

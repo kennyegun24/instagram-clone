@@ -3,14 +3,16 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import img from '../../assets/R.jfif'
 import { AuthContext } from '../../context/context'
+import { UserContext } from '../../context/searchUser'
 import { db } from '../../firebase'
 
 const Search = () => {
 
   const [useranme, setUseranme] = useState('')
-  let [user, setuser] = useState(null)
+  let [user, setuser] = useState('')
   const [err, setErr] = useState(false)
   const {currentUser} = useContext(AuthContext)
+  const {dispatch} = useContext(UserContext)
 
   const handleSearch = async () => {
     const citiesRef = collection(db, "users");
@@ -20,22 +22,8 @@ const Search = () => {
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        const data = doc.data()
-        // let dat = []
-        // dat.push(data)
-
-        // setuser(data)
-        // console.log(doc.displayName, '=>', doc.data)
-        // doc.map((e) => {
-        //   console.log(e)
-
-        //   setuser(e)
-        // })
-      // darray.push(doc.data())
-      // setuser([darray])
-        // console.log(user)
-        user(data)
-        console.log(user)
+      darray.push(doc.data())
+      setuser([darray])
       })
 
     } catch(err) {
@@ -48,65 +36,38 @@ const Search = () => {
     handleSearch();
   }
 
-  const handleClick = async () => {
-    //check whether the group exists or not, if not, create
-    // const combineId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid
-
-    // try{
-    //   const response = await getDoc(doc(db, "chats", combineId))
-    //   if(!response.exists()) {
-    //     await setDoc(doc(db, "chats", combineId), {messages: []})
-
-    //     await updateDoc(doc(db, "userchat", currentUser.uid), {
-    //       [combineId+".userInfo"]: {
-    //         uid:user.uid,
-    //         displayName: user.displayName,
-    //         photoURL: user.photoURL
-    //       },
-    //       [combineId+".date"]:serverTimestamp()
-    //     });
-    //     await updateDoc(doc(db, "userchat", user.uid), {
-    //       [combineId+".userInfo"]: {
-    //         uid:currentUser.uid,
-    //         displayName: currentUser.displayName,
-    //         photoURL: currentUser.photoURL
-    //       },
-    //       [combineId+".date"]:serverTimestamp()
-    //     });
-    //   }
-    // }catch(error) {
-
-    // }
-    // const navigate = useNavigate()
-    // navigate(`/${user.displayName}`)
+  const handleClick = (u) => {
+    dispatch({type:"Switch_User", payload: u})
     setuser(null)
     setUseranme('')
   }
+  console.log(user)
 
   return (
     <div className='searchDiv'>
-      <form className='searchForm' onSubmit={handleKey}>
+
+      <form className='searchForm flex column alit' onChange={handleKey}>
         <input type="search" className='search' value={useranme} onChange={(e) =>setUseranme(e.target.value)} placeholder='search for a user...'/>
       </form>
-      {err && <span>No users....</span>}
-      { user && (
-        user.map((map) => {
-          console.log(map)
-          return (
-          <p key={map[0].uid}>{map[0].displayName}</p> )
-})
-       /*{/* {user &&( 
-      <Link to={`/${user.displayName}`}>
-        <div className="flex gap searchUser alit" onClick={handleClick}>
-          <img src={img} className='pImg2' alt="" />
-          <div className='userChat userSearch'>
-            <p>{user.displayName}</p>
-            <span>hey there</span>
+
+      { user.length !== 0 ? (
+        user.flat().map((map) => {
+
+        return (
+        <Link to={`/${map.uid}`} key={map.uid} className="link" >
+          
+          <div className="flex gap searchUser alit" onClick={()=>handleClick(map)} key={map.uid}>
+            <img src={map.photoURL} className='pImg2' alt="" />
+            <div className='userChat userSearch poppins fnt12'>
+              <p>{map.displayName}</p>
+              <p>{map.name}</p>
+            </div>
           </div>
-        </div>
-      </Link> */
-      )}
-  </div>
+
+        </Link>
+        )
+      })) : <p className='searchUser poppins'>No users...</p>}
+    </div>
   )
 }
 
