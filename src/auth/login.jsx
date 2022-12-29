@@ -17,22 +17,23 @@ const Login = () => {
 
       await signInWithEmailAndPassword(auth, email, password)
       navigation("/")
-      
-    } catch(err) {
+
+    } catch (err) {
       setErr(true)
     }
 
   }
 
   return (
-    <div className='RegDiv'>
-      <div className="flx">
-        <div className='RegDivSm'>
+    <div className='RegDiv flex'>
+      <div className="flex column gap">
+        <div className='RegDivSm flex column'>
           <h1 className='head'>Instagram</h1>
-          <form className='regForm' onSubmit={submitInput}>
-            <input type="email" placeholder='Enter email address'/>
-            <input type="password" placeholder='Password'/>
+          <form className='regForm flex column' onSubmit={submitInput}>
+            <input type="email" placeholder='Enter email address' />
+            <input type="password" placeholder='Password' />
             <button className='signUp' type='submit'>Log in</button>
+            {err && <p>An error occured</p>}
           </form>
         </div>
 
