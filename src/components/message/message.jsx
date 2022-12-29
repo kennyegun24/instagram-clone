@@ -37,7 +37,7 @@ const Message = () => {
               <img src={chat[1].userInfo.photoURL} className='pImg2' alt="" />
               <div>
                 <p>{chat[1].userInfo.displayName}</p>
-                <p className='lstmsg'>{chat[1].lastMessage?.text}</p>
+                <p className='or'>{chat[1].lastMessage?.text}</p>
               </div>
             </div>
           </div>
