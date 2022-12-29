@@ -1,0 +1,570 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Norican&family=Poppins&family=Roboto&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.gapBg {
+  gap: 10%;
+}
+
+.gap2 {
+  gap: 1.5rem;
+}
+
+.alit {
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.poppins {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.fnt12 {
+  font-size: 15px;
+}
+
+.fnt15 {
+  font-size: 15px;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #5c5a5a;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.middle {
+  justify-content: center;
+  height: 70vh;
+  opacity: 0.5;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.side {
+  width: fit-content;
+  border-right: 1px solid #5c5a5a;
+  height: 100vh;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #279bdf;
+}
+
+.RegDiv {
+  justify-content: center;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+.RegDivSm {
+  gap: 1.4rem;
+  width: 350px;
+  border: 1px solid #5c5a5a;
+  padding: 2rem;
+  background: #000000;
+}
+
+.regForm {
+  gap: 0.6rem;
+}
+
+.regForm input {
+  padding: 0.7rem;
+  border-radius: 0.4rem;
+  background-color: #111;
+  border: 1px solid rgb(94, 93, 93);
+  color: #fff;
+}
+
+.regForm input:focus {
+  outline: none;
+}
+
+.signUp {
+  padding: 0.5rem;
+  border: none;
+  background: #447eeb;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+.terms {
+  gap: 1rem;
+  line-height: 20px;
+}
+
+.head {
+  font-family: 'Norican', cursive;
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.signUpIntro {
+  font-family: 'Poppins', sans-serif;
+  opacity: 0.6;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.info {
+  font-size: 13px;
+  color: #a7a6a6;
+  font-weight: 400;
+}
+
+.lgBtn {
+  background: #279bdf;
+  padding: 1rem;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0.2rem;
+}
+
+.or {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+.loginDiv {
+  background: #000000;
+  border: 1px solid #5c5a5a;
+  padding: 2rem;
+}
+
+.home {
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.left {
+  flex: 0.45;
+  border-right: 1px solid #333333;
+  background: #000000;
+}
+
+.right {
+  flex: 1;
+  margin-top: 2vh;
+  height: 98vh;
+}
+
+.center {
+  flex: 2;
+  overflow: auto;
+  height: 98vh;
+  margin-top: 2vh;
+}
+
+.msg {
+  margin: 0 10%;
+  background: #000000;
+  height: 96vh;
+  flex: 2;
+  border: 1px solid #5c5a5a;
+}
+
+.msgCnt {
+  flex: 1.2;
+  border: 1px solid #5c5a5a;
+  height: 100%;
+}
+
+.msgCnt2 {
+  flex: 2;
+  height: 100%;
+  position: relative;
+}
+
+.cent {
+  margin-left: 25%;
+}
+
+.center::-webkit-scrollbar {
+  display: none;
+}
+
+.headNav {
+  font-size: 30px;
+  font-family: 'Norican', cursive;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.navUl,
+.navUl2 {
+  line-height: 50px;
+  font-size: 16px;
+}
+
+.navUl {
+  gap: 0.5rem;
+}
+
+.navUl li {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.navUl li:hover {
+  color: #279bdf;
+  background: #292929;
+  border-radius: 5rem;
+  transition: 0.2s ease-in-out;
+}
+
+.active {
+  color: #279bdf;
+}
+
+.active li {
+  background: #292929;
+  border-radius: 5rem;
+}
+
+.nav {
+  padding: 2rem 1.5rem;
+  height: 100%;
+}
+
+.navUl2 li {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.navUl2 li:hover {
+  background: #292929;
+  border-radius: 5rem;
+  transition: 0.2s ease-in-out;
+  color: #279bdf;
+}
+
+.navUl2 .signOut {
+  display: none;
+}
+
+.navUl2 .show {
+  display: flex;
+  font-size: 12px;
+}
+
+.icon {
+  font-size: 25px;
+}
+
+.post {
+  border: 1px solid #a7a6a6;
+  border-radius: 1rem;
+  background-color: #000000;
+  width: 90%;
+  margin-bottom: 2vh;
+}
+
+.postHead {
+  justify-content: space-between;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid #a7a6a6;
+}
+
+.pImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.pImg2 {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.postImg {
+  width: 100%;
+}
+
+.postIcons {
+  font-size: 20px;
+  padding: 0.5rem;
+  color: #fff;
+}
+
+.profile {
+  gap: 5%;
+}
+
+.profileName {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profileName2 {
+  opacity: 0.5;
+}
+
+.msgCnts {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1%;
+  padding: 1%;
+}
+
+/* .msgCnts::-webkit-scrollbar {
+  color: #447eeb;
+  background-color: #279bdf;
+  background: #279bdf;
+  width: 0.5rem;
+} */
+
+.myName {
+  text-align: center;
+  border-bottom: 1px solid #5c5a5a;
+  padding: 5%;
+  font-family: 'poppins', sans-serif;
+  font-size: 1.2rem;
+  height: 10%;
+}
+
+.msgHead {
+  border-bottom: 1px solid #5c5a5a;
+  justify-content: center;
+  padding: 5%;
+  height: 10%;
+}
+
+.lstmsg {
+  opacity: 0.5;
+}
+
+.msgBg {
+  padding: 1rem;
+  overflow: auto;
+  height: 90%;
+}
+
+.msgBgs {
+  height: 80%;
+  overflow: auto;
+  position: relative;
+  padding: 2%;
+}
+
+.msgBg::-webkit-scrollbar,
+.msgBgs::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.msgBg::-webkit-scrollbar-thumb,
+.msgBgs::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+.inp {
+  height: 10%;
+}
+
+.inp div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+}
+
+.input {
+  bottom: 3%;
+  width: 90%;
+  padding: 2%;
+  background-color: #000000;
+  border-radius: 5rem;
+  border: 1px solid #5c5a5a;
+  color: #fff;
+}
+
+.chatCnt2 {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.chat {
+  background: #333333;
+  border-radius: 0 1rem 1rem 1rem;
+  padding: 2%;
+}
+
+.chatCnt2 .chat {
+  border-radius: 1rem 0 1rem 1rem;
+}
+
+.msgBgs div {
+  margin-bottom: 2%;
+}
+
+.searchDiv {
+  margin: 0 10%;
+  width: 30%;
+  border: 1px solid #5c5a5a;
+  padding: 1%;
+}
+
+.searchForm {
+  width: 100%;
+}
+
+.search {
+  width: 90%;
+  border-radius: 2%;
+  background: #333333;
+  padding: 2%;
+  border-radius: 5rem;
+  border: 1px solid #447eeb;
+}
+
+.searchUser {
+  padding: 5%;
+}
+
+.searchUser:hover {
+  background: #5c5a5a;
+  border-radius: 5rem;
+}
+
+.userProfCont {
+  margin: 0 10%;
+  padding: 2%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.pImg3 {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.msgFollow span {
+  background: #fff;
+  color: #000000;
+  font-weight: 600;
+  border-radius: 5rem;
+  padding: 3%;
+}
+
+
+.imgPostProf {
+  width: 100%;
+}
+
+.profPostDiv {
+  padding: 5% 5%;
+}
+
+.userPosts {
+  height: 60vh;
+  overflow: auto;
+}
+
+.userPosts::-webkit-scrollbar {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.userPostFunc {
+  display: flex;
+  justify-content: center;
+  /* width: 100%; */
+  height: 12vh;
+  align-items: center;
+}
+
+.postHover:hover {
+  color: #279bdf;
+}
+
+.centertxt {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'norican', cursive;
+  opacity: 0.5;
+}
+
+.postTextFunc {
+  padding: 1rem;
+  border: none;
+  background: #000000;
+  border: 2px solid #447eeb;
+  font-size: 14px;
+  color: #fff;
+}
+
+.postText {
+  margin-top: 1%;
+  margin-left: 1%;
+}
