@@ -28,13 +28,12 @@ const Message = () => {
     dispatch({ type: "CHANGE_USER", payload: u })
   }
 
-  console.log(mapp)
   return (
     <div className=''>
       {mapp && mapp.length !== 0 && mapp.map((chat) => {
         return (
-          <div className="msgCnts flex column borderBottom" onClick={() => handleSelect(chat[1].userInfo)}>
-            <div className='msgPrv flex gap alit pointer' key={chat[1].userInfo.uid}>
+          <div className="msgCnts flex column borderBottom" onClick={() => handleSelect(chat[1].userInfo)} key={chat[1].userInfo.uid}>
+            <div className='msgPrv flex gap alit pointer' >
               <img src={chat[1].userInfo.photoURL} className='pImg2' alt="" />
               <div>
                 <p>{chat[1].userInfo.displayName}</p>

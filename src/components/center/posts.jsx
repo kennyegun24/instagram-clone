@@ -26,7 +26,6 @@ const Posts = () => {
     });
 
     await snapshotPromise;
-    console.log(arr2)
     return arr2;
   }
 
@@ -53,21 +52,18 @@ const Posts = () => {
     });
 
     await Promise.all(snapshotPromises);
-    console.log(arr2);
     return arr2;
+  }
+
+  const joinArrays = async () => {
+    const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
+    const combinedArray = [...array1, ...array2];
+    setPosts(combinedArray.flat());
   }
 
   /* eslint-disable */
   useEffect(() => {
-    const joinArrays = async () => {
-      const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
-      const combinedArray = [...array1, ...array2];
-      setPosts(combinedArray.flat());
-    }
-
-    return () => {
-      joinArrays()
-    }
+    joinArrays()
   }, [])
 
   return (
