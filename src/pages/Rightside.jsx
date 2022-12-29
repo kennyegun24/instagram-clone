@@ -4,31 +4,30 @@ import { AuthContext } from '../context/context'
 import { UserContext } from '../context/searchUser'
 import { db } from '../firebase'
 const Rightside = () => {
-  const {currentUser} = useContext(AuthContext)
-  const {data} = useContext(UserContext)
-  const {dispatch} = useContext(UserContext)
-  let darray = null;
-
-  const user = async () => {
-    const citiesRef = collection(db, "users");
-    const q = query(citiesRef, where("uid", "==", currentUser.uid));
-
-    try {
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        darray = doc.data()
-      })
-      dispatch({type:"Switch_User", payload: darray})
-  
-    } catch(err) {
-        //  setErr(true)
-      }
-  }
+  const { currentUser } = useContext(AuthContext)
+  const { data } = useContext(UserContext)
+  const { dispatch } = useContext(UserContext)
 
   useEffect(() => {
-    user()
-  }, [])
-  console.log(data)
+    const user = async () => {
+      let darray;
+      const citiesRef = collection(db, "users");
+      const q = query(citiesRef, where("uid", "==", currentUser.uid));
+
+      try {
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          darray = doc.data()
+        })
+        dispatch({ type: "Switch_User", payload: darray })
+
+      } catch (err) {
+      }
+    }
+    return () => {
+      user()
+    }
+  }, [dispatch, currentUser.uid])
 
   return (
     <div className='profile flex alit'>

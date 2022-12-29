@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useRef } from 'react'
-import img from '../../assets/R.jfif'
 import { ChatContext } from '../../context/chatsContext'
 import { AuthContext } from '../../context/context'
 
-const MessageContent = ({message}) => {
-  const {data} = useContext(ChatContext)
-  const {currentUser} = useContext(AuthContext)
+const MessageContent = ({ message }) => {
+  const { data } = useContext(ChatContext)
+  const { currentUser } = useContext(AuthContext)
   const smoothSlide = useRef();
 
-  useEffect(()=>{
-    smoothSlide.current?.scrollIntoView({ behavior: 'smooth'});
-  },[message]);
+  useEffect(() => {
+    smoothSlide.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [message])
 
   return (
     <div className='' ref={smoothSlide}>

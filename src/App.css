@@ -60,6 +60,15 @@ button {
   border-bottom: 1px solid #5c5a5a;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.wrap {
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
 .middle {
   justify-content: center;
   height: 70vh;
@@ -156,7 +165,7 @@ button {
 }
 
 .or {
-  font-size: 14px;
+  font-size: 11px;
   opacity: 0.6;
 }
 
@@ -167,9 +176,9 @@ button {
 }
 
 .home {
-  align-items: flex-start;
   width: 100%;
   height: 100%;
+  justify-content: flex-start;
 }
 
 .left {
@@ -226,17 +235,18 @@ button {
   margin-bottom: 2rem;
 }
 
-.navUl, .navUl2 {
+.navUl,
+.navUl2 {
   line-height: 50px;
   font-size: 16px;
 }
 
-.navUl{
+.navUl {
   gap: 0.5rem;
 }
 
 .navUl li {
-  font-family: 'Poppins' ,sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -266,7 +276,7 @@ button {
 }
 
 .navUl2 li {
-  font-family: 'Poppins' ,sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -393,11 +403,13 @@ button {
   padding: 2%;
 }
 
-.msgBg::-webkit-scrollbar, .msgBgs::-webkit-scrollbar {
+.msgBg::-webkit-scrollbar,
+.msgBgs::-webkit-scrollbar {
   width: 0.5vw;
 }
 
-.msgBg::-webkit-scrollbar-thumb, .msgBgs::-webkit-scrollbar-thumb {
+.msgBg::-webkit-scrollbar-thumb,
+.msgBgs::-webkit-scrollbar-thumb {
   background-color: white;
 }
 
@@ -489,10 +501,70 @@ button {
   border-radius: 50%;
 }
 
-.msgFollow span{
+.msgFollow span {
   background: #fff;
   color: #000000;
   font-weight: 600;
   border-radius: 5rem;
   padding: 3%;
+}
+
+
+.imgPostProf {
+  width: 100%;
+}
+
+.profPostDiv {
+  padding: 5% 5%;
+}
+
+.userPosts {
+  height: 60vh;
+  overflow: auto;
+}
+
+.userPosts::-webkit-scrollbar {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.userPostFunc {
+  display: flex;
+  justify-content: center;
+  /* width: 100%; */
+  height: 12vh;
+  align-items: center;
+}
+
+.postHover:hover {
+  color: #279bdf;
+}
+
+.centertxt {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'norican', cursive;
+  opacity: 0.5;
+}
+
+.postTextFunc {
+  padding: 1rem;
+  border: none;
+  background: #000000;
+  border: 2px solid #447eeb;
+  font-size: 14px;
+  color: #fff;
+}
+
+.postText {
+  margin-top: 1%;
+  margin-left: 1%;
 }

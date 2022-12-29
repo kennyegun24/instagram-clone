@@ -2,17 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import Message from '../components/message/message'
 import MessageContent from '../components/message/MessageContent'
 import { AuthContext } from '../context/context'
-import img from '../assets/R.jfif'
 import MsgInp from '../components/message/MsgInp'
 import { ChatContext } from '../context/chatsContext'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 
 const Messages = () => {
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
 
   const [messages, setMessages] = useState([])
-  const {data} = useContext(ChatContext)
+  const { data } = useContext(ChatContext)
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
@@ -22,7 +21,7 @@ const Messages = () => {
       unSub()
     }
   }, [data.chatId])
-  console.log(messages)
+  // console.log(currentUser.uid)
 
   return (
     <div className='msg flex'>
@@ -35,18 +34,18 @@ const Messages = () => {
 
       <div className='msgCnt2'>
         <div className='flex gap alit msgHead'>
-          <img src={data.user ?.photoURL} className='pImg' alt="" />
+          <img src={data.user?.photoURL} className='pImg' alt="" />
           <div>
             <p>
-              {data.user ?.displayName}
+              {data.user?.displayName}
             </p>
           </div>
         </div>
 
         <div className='msgBgs'>
-        {messages.length !== 0 ? (messages.map((message) => (
-            <MessageContent message={message}/>
-          ))): <p>No chats</p>}
+          {messages.length !== 0 ? (messages.map((message) => (
+            <MessageContent message={message} />
+          ))) : <p>No chats</p>}
         </div>
 
         <div className="inp">

@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
-import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom'
-import {FaBars, FaCompass, FaHome, FaPowerOff, FaRegPaperPlane, FaSearch} from 'react-icons/fa'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { FaBars, FaCompass, FaHome, FaPowerOff, FaRegPaperPlane, FaSearch } from 'react-icons/fa'
 import { AuthContext } from '../../context/context'
 import { signOut } from 'firebase/auth'
-import { auth } from '../../firebase'
-import UserProfile from '../../pages/userProfile'
-import img from '../../assets/R.jfif'
+import { auth, db } from '../../firebase'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 
 const Nav = () => {
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -20,6 +19,13 @@ const Nav = () => {
   const signout = () => {
     signOut(auth)
     navigate('/')
+  }
+
+  const click = async () => {
+    const res = await getDoc(doc(db, "posts", currentUser.uid))
+    if (!res.exists()) {
+      await setDoc(doc(db, "posts", currentUser.uid), { posts: [] })
+    }
   }
 
   return (
@@ -42,7 +48,7 @@ const Nav = () => {
           <li>
             <FaCompass className='icon' /> Explore
           </li>
-          <NavLink to='/messages'className='link'>
+          <NavLink to='/messages' className='link'>
             <li>
               <FaRegPaperPlane className='icon' /> Messages
             </li>
@@ -56,10 +62,10 @@ const Nav = () => {
             </NavLink>
           </div> */}
           <NavLink to={`/${currentUser.uid}`} className='link' >
-              <li>
-                <img src={currentUser.photoURL} className='pImg' alt="" /> Profile
-              </li>
-            </NavLink>
+            <li onClick={click}>
+              <img src={currentUser.photoURL} className='pImg' alt="" /> Profile
+            </li>
+          </NavLink>
         </ul>
 
         <ul className='navUl2'>
