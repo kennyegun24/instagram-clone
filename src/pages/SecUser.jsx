@@ -1,4 +1,4 @@
-import { arrayUnion, collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from 'firebase/firestore'
+import { arrayUnion, doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/context'
@@ -39,7 +39,7 @@ const SecUser = () => {
     return () => {
       updateFollow()
     }
-  }, [data.user.uid, discharge])
+  }, [discharge, data.user.uid])
 
   useEffect(() => {
     const updateFollowing = async () => {
@@ -68,7 +68,7 @@ const SecUser = () => {
         await setDoc(doc(db, "follow", data.user.uid), {
           follow: (
             arrayUnion({
-              uid: currentUser.uid
+              id: currentUser.uid
             }))
         })
       }
@@ -180,33 +180,10 @@ const SecUser = () => {
         navigation('/messages')
       }
       navigation('/messages')
-      console.log(response.data().messages.length)
 
     } catch {
 
     }
-
-    let darray = null;
-
-    const user = async () => {
-      const citiesRef = collection(db, "follow");
-      const q = query(citiesRef, where("uid.follow", "==", data.user.uid));
-
-      try {
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-          darray = doc.data()
-          console.log(darray)
-        })
-        // dispatch({type:"Switch_User", payload: darray})
-
-      } catch (err) {
-        //  setErr(true)
-        console.log(err)
-      }
-    }
-    user()
-
   }
 
   const followCheck = datas.user.includes(currentUser.uid)

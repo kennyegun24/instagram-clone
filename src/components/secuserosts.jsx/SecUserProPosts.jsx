@@ -1,3 +1,4 @@
+import { Col, Row } from 'antd'
 import { doc, onSnapshot } from 'firebase/firestore'
 import React, { useContext, useEffect, useState } from 'react'
 import { PostCountContext } from '../../context/postsCounts'
@@ -31,11 +32,13 @@ const SecUserProPosts = () => {
         <div className='centertxt'>
           <p>No posts yet...</p>
         </div>}
-      <div className='grid'>
+      <Row gutters={[32, 32]}>
         {images && images.map((images) => (
-          <SecUserPosts images={images} key={images.id} />
+          <Col xs={24} sm={12} lg={6} key={images.id}>
+            <SecUserPosts images={images} key={images.id} />
+          </Col>
         ))}
-      </div>
+      </Row>
     </div>
   )
 }

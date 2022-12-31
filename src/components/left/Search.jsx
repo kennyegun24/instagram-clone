@@ -9,7 +9,6 @@ const Search = () => {
   const [useranme, setUseranme] = useState('')
   let [user, setuser] = useState('')
   const { dispatch } = useContext(UserContext)
-  // console.log(useranme)
 
   const handleSearch = async () => {
     const citiesRef = collection(db, "users");
@@ -19,9 +18,7 @@ const Search = () => {
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data())
         darray.push(doc.data())
-        // console.log(darray)
 
         setuser([darray])
       })

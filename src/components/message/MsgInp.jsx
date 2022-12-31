@@ -15,7 +15,7 @@ const MsgInp = () => {
   const handleSend = async (e) => {
     e.preventDefault()
 
-    if (!text === '') {
+    if (text !== '') {
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuidv4(),

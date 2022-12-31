@@ -7,6 +7,7 @@ import { UserContextProvider } from './context/searchUser';
 import { DischargeContextProvider } from './context/discharge';
 import { UpdateFollowing } from './context/updateFollow';
 import { PostCountContextProvider } from './context/postsCounts';
+import { StatusContextProvider } from './context/status';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,9 +18,11 @@ root.render(
         <DischargeContextProvider>
           <UpdateFollowing>
             <PostCountContextProvider>
-              <React.StrictMode>
-                <App />
-              </React.StrictMode>
+              <StatusContextProvider>
+                <React.StrictMode>
+                  <App />
+                </React.StrictMode>
+              </StatusContextProvider>
             </PostCountContextProvider>
           </UpdateFollowing>
         </DischargeContextProvider>

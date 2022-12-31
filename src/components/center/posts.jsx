@@ -8,6 +8,7 @@ import { db } from '../../firebase';
 const Posts = () => {
   const [finalPosts, setPosts] = useState([])
   const { currentUser } = useContext(AuthContext)
+  // const { data } = useContext(Chatc)
   const { dischargePosts } = useContext(PostCountContext)
 
   const getArray1 = async () => {
@@ -26,7 +27,6 @@ const Posts = () => {
     });
 
     await snapshotPromise;
-    console.log(arr2)
     return arr2;
   }
 
@@ -53,21 +53,17 @@ const Posts = () => {
     });
 
     await Promise.all(snapshotPromises);
-    console.log(arr2);
     return arr2;
   }
 
+  const joinArrays = async () => {
+    const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
+    const combinedArray = [...array1, ...array2];
+    setPosts(combinedArray.flat());
+  }
   /* eslint-disable */
   useEffect(() => {
-    const joinArrays = async () => {
-      const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
-      const combinedArray = [...array1, ...array2];
-      setPosts(combinedArray.flat());
-    }
-
-    return () => {
-      joinArrays()
-    }
+    joinArrays()
   }, [])
 
   return (
@@ -79,31 +75,39 @@ const Posts = () => {
       }
 
       <div>
-        {finalPosts.length !== 0 && finalPosts.sort((a, b) => b.date - a.date).map((images) => {
-          return (
+        {
+          finalPosts.length !== 0 && finalPosts.sort((a, b) => b.date - a.date).map((images) => {
+            return (
 
-            <div className='post flex column' key={images.id}>
-              <div className='postHead flex alit'>
-                <div className='postHeadSm flex alit gap'>
-                  <img className='pImg' src={images.photoURL} alt="" />
-                  <p>{images.name}</p>
+              <div className='post flex column' key={images.id}>
+                <div className='postHead flex alit'>
+                  <div className='postHeadSm flex alit gap'>
+                    <img className='pImg' src={images.photoURL} alt="" />
+                    <p>{images.name}</p>
+                  </div>
+                  <FaEllipsisH />
                 </div>
-                <FaEllipsisH />
+                <img className='postImg' src={images.img} alt="" />
+                <div className="postIcons gap flex alit">
+                  <FaHeart className='postIcon' />
+                  <FaComment className='postIcon' />
+                  <FaPaperPlane className='postIcon' />
+                </div>
+                <div className='postText'>
+                  {images.text &&
+                    <div className='flex alit gap marginBtm'>
+                      <p className='or poppins'>{`${images.name}`}</p>
+                      <p className='poppins fntMd'>{images.text}</p>
+                    </div>
+                  }
+                  <div>
+                    <p className=' poppins or'>{images.time}</p>
+                  </div>
+                </div>
               </div>
-              <img className='postImg' src={images.img} alt="" />
-              <div className="postIcons gap flex alit">
-                <FaHeart className='postIcon' />
-                <FaComment className='postIcon' />
-                <FaPaperPlane className='postIcon' />
-              </div>
-              {images.text && <p className='postText poppins' >{images.text}</p>}
-              <div>
-                <p className='postText poppins or'>{images.newDate}</p>
-                <p className='postText poppins or'>{images.time}</p>
-              </div>
-            </div>
-          )
-        })}
+            )
+          })
+        }
       </div>
     </div>
   )

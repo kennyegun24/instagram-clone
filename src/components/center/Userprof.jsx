@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/context'
 import { DischargeContext } from '../../context/discharge'
 import { PostCountContext } from '../../context/postsCounts'
 import { UserContext } from '../../context/searchUser'
+import { StatusContext } from '../../context/status'
 import { followingContext } from '../../context/updateFollow'
 import { db } from '../../firebase'
 
@@ -17,6 +18,7 @@ const Userprof = () => {
   const { following } = useContext(followingContext)
   const { display } = useContext(followingContext)
   const { count } = useContext(PostCountContext)
+  const { progress } = useContext(StatusContext)
 
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Userprof = () => {
     return () => {
       updateFollow()
     }
-  }, [currentUser.uid, discharge])
+  }, [discharge, currentUser.uid])
 
   useEffect(() => {
     const updateFollowing = async () => {
@@ -57,7 +59,7 @@ const Userprof = () => {
     return () => {
       updateFollowing()
     }
-  }, [currentUser.uid, display])
+  }, [display, currentUser.uid])
 
   useEffect(() => {
     let darray;
@@ -75,10 +77,10 @@ const Userprof = () => {
     return () => {
       user()
     }
-  }, [currentUser.uid, dispatch])
+  }, [dispatch, currentUser.uid])
 
   return (
-    <div className='userProfCont'>
+    <div className='userProfCont' style={{ filter: progress.status && 'blur(5px)' }}>
       <div className="userprofdiv">
         <div className="profHeader flex gapBg alit">
           <img src={data.user.photoURL} alt="" className="pImg3" />

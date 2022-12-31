@@ -21,7 +21,6 @@ const Messages = () => {
       unSub()
     }
   }, [data.chatId])
-  // console.log(currentUser.uid)
 
   return (
     <div className='msg flex'>
@@ -56,7 +55,6 @@ const Messages = () => {
       </div>
     </div>
   )
-  // console.log(messages)
 
 }
 

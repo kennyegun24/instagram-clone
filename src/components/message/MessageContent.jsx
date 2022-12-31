@@ -15,7 +15,7 @@ const MessageContent = ({ message }) => {
     <div className='' ref={smoothSlide}>
       <div className={`chatCnt flex alit gap ${message.senderId === currentUser.uid && "chatCnt2"}`}>
         <img src={message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL} alt="" className='pImg' />
-        <p className="chat">
+        <p className="chat poppins">
           {message.text}
         </p>
       </div>
