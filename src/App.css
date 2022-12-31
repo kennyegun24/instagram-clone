@@ -386,10 +386,6 @@ button {
   height: 10%;
 }
 
-.lstmsg {
-  opacity: 0.5;
-}
-
 .msgBg {
   padding: 1rem;
   overflow: auto;
@@ -567,4 +563,125 @@ button {
 .postText {
   margin-top: 1%;
   margin-left: 1%;
+  padding: 2%;
+}
+
+.marginBtm {
+  margin-bottom: 1%;
+}
+
+.fntMd {
+  font-size: 13px;
+}
+
+.rollingCenter {
+  height: 100vh;
+  background: transparent;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  position: absolute;
+  right: 0;
+}
+
+.postAnimationCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid#920a0a;
+  height: 40px;
+  justify-content: center;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.postingAnimation {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.postingText {
+  color: #000;
+}
+
+.dmdiv {
+  width: 150px;
+  position: relative;
+  padding: 2px;
+}
+
+.line2,
+.line3,
+.line4,
+.line5,
+.line6 {
+  position: absolute;
+  width: 5px;
+  top: 0px;
+  padding: 2px;
+  background-color: #920a0a;
+  color: blanchedalmond;
+  animation: lines2 linear 1s infinite;
+  border-radius: 5px;
+}
+
+.secline2,
+.secline3,
+.secline4,
+.secline5,
+.secline6 {
+  position: absolute;
+  width: 5px;
+  top: 0px;
+  padding: 2px;
+  background-color: #191770;
+  color: blanchedalmond;
+  animation: lines2 reverse 1s infinite;
+  border-radius: 5px;
+}
+
+.line3 {
+  animation: lines2 linear 3s infinite;
+}
+
+.secline3 {
+  animation: lines2 reverse 3s infinite;
+}
+
+.line4 {
+  animation: lines2 linear 2.5s infinite;
+}
+
+.secline4 {
+  animation: lines2 reverse 2.5s infinite;
+}
+
+.line5 {
+  animation: lines2 linear 3.5s infinite;
+}
+
+.secline5 {
+  animation: lines2 reverse 3.5s infinite;
+}
+
+.line6 {
+  animation: lines2 linear 4s infinite;
+}
+
+.secline6 {
+  animation: lines2 reverse 4s infinite;
+}
+
+@keyframes lines2 {
+  0% {
+    left: 20px;
+  }
+
+  100% {
+    left: calc(150px - 32px);
+  }
 }
