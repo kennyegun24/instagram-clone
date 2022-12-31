@@ -12,10 +12,13 @@ import UserProfile from './pages/userProfile';
 import Search from './components/left/Search';
 import { UserContext } from './context/searchUser';
 import SecUserProfile from './components/center/secUserProfile';
+import { StatusContext } from './context/status'
 
 function App() {
   const { currentUser } = useContext(AuthContext)
   const { data } = useContext(UserContext)
+
+  const { progress } = useContext(StatusContext)
 
   return (
     <div className="App">
@@ -23,7 +26,7 @@ function App() {
         {currentUser ?
           <div className='center'>
             <div className='flex h100' >
-              <div className='side'>
+              <div className='side' style={{ filter: progress.status && 'blur(5px)' }}>
                 <Leftside />
               </div>
               <Routes>
