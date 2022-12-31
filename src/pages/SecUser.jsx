@@ -39,7 +39,7 @@ const SecUser = () => {
     return () => {
       updateFollow()
     }
-  }, [data.user.uid, discharge])
+  }, [discharge, data.user.uid])
 
   useEffect(() => {
     const updateFollowing = async () => {
@@ -68,7 +68,7 @@ const SecUser = () => {
         await setDoc(doc(db, "follow", data.user.uid), {
           follow: (
             arrayUnion({
-              uid: currentUser.uid
+              id: currentUser.uid
             }))
         })
       }
