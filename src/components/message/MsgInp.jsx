@@ -38,7 +38,6 @@ const MsgInp = () => {
         },
         [data.chatId + ".date"]: serverTimestamp()
       })
-      console.log('jey')
       setText('')
     }
   }
