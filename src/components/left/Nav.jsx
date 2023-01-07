@@ -5,11 +5,27 @@ import { AuthContext } from '../../context/context'
 import { signOut } from 'firebase/auth'
 import { auth, db } from '../../firebase'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { ChatContext } from '../../context/chatsContext'
+import { MessagesContext } from '../../context/messages'
 
 const Nav = () => {
   const { currentUser } = useContext(AuthContext)
+  const { dispatch } = useContext(ChatContext)
+  const { dischargeMessages } = useContext(MessagesContext)
 
   const navigate = useNavigate()
+
+  const click = async () => {
+    const res = await getDoc(doc(db, "posts", currentUser.uid))
+    if (!res.exists()) {
+      await setDoc(doc(db, "posts", currentUser.uid), { posts: [] })
+    }
+  }
+
+  const handleSelect = () => {
+    dispatch({ type: "CHANGE_USER", payload: 'null' })
+    dischargeMessages({ type: 'messages', payload: 'null' })
+  }
 
   const openUp = () => {
     const sign = document.querySelector('.signOut')
@@ -19,13 +35,7 @@ const Nav = () => {
   const signout = () => {
     signOut(auth)
     navigate('/')
-  }
-
-  const click = async () => {
-    const res = await getDoc(doc(db, "posts", currentUser.uid))
-    if (!res.exists()) {
-      await setDoc(doc(db, "posts", currentUser.uid), { posts: [] })
-    }
+    handleSelect()
   }
 
   return (
@@ -36,16 +46,16 @@ const Nav = () => {
         </h1>
         <ul className='navUl flex column'>
           <NavLink to="/" className='link'>
-            <li>
+            <li onClick={handleSelect}>
               <FaHome className='icon' /> Home
             </li>
           </NavLink>
           <NavLink to='/search' className='link'>
-            <li>
+            <li onClick={handleSelect}>
               <FaSearch className='icon' /> Search
             </li>
           </NavLink>
-          <li>
+          <li onClick={handleSelect}>
             <FaCompass className='icon' /> Explore
           </li>
           <NavLink to='/messages' className='link'>
@@ -61,7 +71,7 @@ const Nav = () => {
               </li>
             </NavLink>
           </div> */}
-          <NavLink to={`/${currentUser.uid}`} className='link' >
+          <NavLink to={`/${currentUser.uid}`} onClick={handleSelect} className='link' >
             <li onClick={click}>
               <img src={currentUser.photoURL} className='pImg' alt="" /> Profile
             </li>
