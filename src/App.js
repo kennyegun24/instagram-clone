@@ -27,7 +27,7 @@ function App() {
           <div className='center'>
             <div className='flex h100' >
               <div className='side' style={{ filter: progress.status && 'blur(5px)' }}>
-                <Leftside />
+                {currentUser ? <Leftside /> : ''}
               </div>
               <Routes>
                 <Route path='/'>
@@ -35,7 +35,7 @@ function App() {
                     index
                     element={<Homepage />}
                   />
-                  <Route path='messages' element={<Messages />} />
+                  <Route path='messages' element={currentUser ? <Messages /> : <Login />} />
                   <Route path='search' element={<Search />} />
                   <Route path={currentUser ? `${currentUser.uid}` : '/'} element={<UserProfile />} />
                   <Route path={data ? `${data.user.uid}` : '/'} element={<SecUserProfile />} />
@@ -48,6 +48,8 @@ function App() {
             <Route index element={<Login />} />
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
+            <Route path='messages' element={<Login />} />
+            <Route path='search' element={<Login />} />
           </Routes>}
       </BrowserRouter>
     </div>
