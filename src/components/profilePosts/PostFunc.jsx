@@ -124,6 +124,7 @@ const PostFunc = () => {
             </div>
           </label>
           <button onClick={handlePost}>Post</button>
+          {img && <img src={URL.createObjectURL(img)} alt='' className='imgObj' />}
         </div>
       </form>
     </div>

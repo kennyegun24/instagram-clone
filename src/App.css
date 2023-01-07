@@ -23,6 +23,14 @@ button {
   display: flex;
 }
 
+.gapSm {
+  gap: 0.2rem;
+}
+
+.gapSm2 {
+  gap: 0.5rem
+}
+
 .gap {
   gap: 1rem;
 }
@@ -37,6 +45,10 @@ button {
 
 .alit {
   align-items: center;
+}
+
+.jstCnt {
+  justify-content: center;
 }
 
 .column {
@@ -308,7 +320,7 @@ button {
   border: 1px solid #a7a6a6;
   border-radius: 1rem;
   background-color: #000000;
-  width: 90%;
+  width: 80%;
   margin-bottom: 2vh;
 }
 
@@ -438,18 +450,34 @@ button {
 
 .chatCnt2 {
   display: flex;
-  align-items: center;
   flex-direction: row-reverse;
 }
 
 .chat {
   background: #333333;
   border-radius: 0 1rem 1rem 1rem;
-  padding: 2%;
+  padding: 0.5em;
+  width: max-content;
+  max-width: 70%;
+}
+
+.chatTime {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.7;
 }
 
 .chatCnt2 .chat {
   border-radius: 1rem 0 1rem 1rem;
+}
+
+.end {
+  width: 100%;
+}
+
+.chatCnt2 .end {
+  align-items: flex-end;
+  width: 100%;
 }
 
 .msgBgs div {
@@ -560,6 +588,17 @@ button {
   color: #fff;
 }
 
+.postTextFunc2 {
+  padding: 1rem;
+  resize: none;
+  border: none;
+  background: #000000;
+  border-bottom: 2px solid #447eeb;
+  font-size: 14px;
+  width: 100%;
+  color: #fff;
+}
+
 .postText {
   margin-top: 1%;
   margin-left: 1%;
@@ -572,6 +611,13 @@ button {
 
 .fntMd {
   font-size: 13px;
+}
+
+.postDisplayImg {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .rollingCenter {
@@ -683,5 +729,85 @@ button {
 
   100% {
     left: calc(150px - 32px);
+  }
+}
+
+.imgObj {
+  width: 60px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgObj2 {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.txtObj {
+  max-width: 100%;
+  height: max-content;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* dfhsdsfd */
+
+.animationCard {
+  /* position: relative; */
+  width: 90%;
+  height: 40vh;
+  background-color: #111;
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  box-shadow: 10px 15px 25px rgba(238, 236, 236, 0.1);
+  margin-bottom: 5vh;
+}
+
+.animationWrapper,
+.animationHead2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;
+  align-items: center; */
+  width: 100%;
+  height: 100%;
+}
+
+.animationImg {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+}
+
+.animationHead span p {
+  position: absolute;
+  width: 55%;
+  height: 15%;
+  top: 0;
+  left: 45%;
+  border-radius: 2px;
+}
+
+.animationHead2 div p {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  bottom: 100%;
+  left: 0%;
+  border-radius: 10px;
+}
+
+.animationWrapper *,
+.animationHead2 * {
+  background: linear-gradient(120deg, #333232 30%, #4b4a4a 38%, #4b4a4a 40%, #333232 48%);
+  background-size: 200%;
+  background-position: 100% 0;
+  animation: anim 1.5s infinite;
+}
+
+@keyframes anim {
+  to {
+    background-position: -100% 0;
   }
 }
