@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Message from '../components/message/message'
 import MessageContent from '../components/message/MessageContent'
 import { AuthContext } from '../context/context'
@@ -6,21 +6,22 @@ import MsgInp from '../components/message/MsgInp'
 import { ChatContext } from '../context/chatsContext'
 import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
+import { MessagesContext } from '../context/messages'
 
 const Messages = () => {
   const { currentUser } = useContext(AuthContext)
+  const { dischargeMessages } = useContext(MessagesContext)
 
-  const [messages, setMessages] = useState([])
   const { data } = useContext(ChatContext)
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
-      doc.exists() && setMessages(doc.data().messages)
+      doc.exists() && dischargeMessages({ type: 'messages', payload: doc.data().messages })
     })
     return () => {
       unSub()
     }
-  }, [data.chatId])
+  }, [data.chatId, dischargeMessages])
 
   return (
     <div className='msg flex'>
@@ -42,11 +43,8 @@ const Messages = () => {
         </div>
 
         <div className='msgBgs'>
-          {messages.length !== 0 ? (messages.map((message) => (
-            <MessageContent message={message} />
-          ))) : <p>No chats</p>}
+          <MessageContent />
         </div>
-
         <div className="inp">
           <div>
             <MsgInp />
