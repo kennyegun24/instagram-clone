@@ -12,6 +12,16 @@ const MsgInp = () => {
   const { data } = useContext(ChatContext)
   const { currentUser } = useContext(AuthContext)
 
+  const date = new Date();
+
+  const dateString = date.toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+  });
+
   const handleSend = async (e) => {
     e.preventDefault()
 
@@ -21,7 +31,8 @@ const MsgInp = () => {
           id: uuidv4(),
           text,
           senderId: currentUser.uid,
-          date: Timestamp.now()
+          date: Timestamp.now(),
+          time: dateString
         })
       })
 

@@ -14,7 +14,6 @@ const Login = () => {
     const password = e.target[1].value;
 
     try {
-
       await signInWithEmailAndPassword(auth, email, password)
       navigation("/")
 
@@ -28,7 +27,7 @@ const Login = () => {
     <div className='RegDiv flex'>
       <div className="flex column gap">
         <div className='RegDivSm flex column'>
-          <h1 className='head'>Instagram</h1>
+          <h1 className='head'>Kenstagram</h1>
           <form className='regForm flex column' onSubmit={submitInput}>
             <input type="email" placeholder='Enter email address' />
             <input type="password" placeholder='Password' />
