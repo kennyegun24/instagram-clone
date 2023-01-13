@@ -839,6 +839,10 @@ button {
     position: relative;
   }
 
+  .home {
+    margin-bottom: 10%;
+  }
+
   .msgBgs {
     height: 76%;
   }
@@ -894,10 +898,6 @@ button {
     padding: 2%;
     top: auto;
     height: 10%;
-  }
-
-  .nav {
-    height: fit-content;
   }
 
   .navUl,
