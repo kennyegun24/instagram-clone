@@ -833,6 +833,10 @@ button {
 }
 
 @media (max-width: 760px) {
+  .hmmm {
+    max-height: 10vh;
+  }
+
   .navUl {
     position: fixed;
     display: flex;
@@ -851,7 +855,7 @@ button {
   .msgCnt2 {
     flex: 2;
     width: 95%;
-    position: relative;
+    position: initial;
     height: 90vh;
   }
 
@@ -882,6 +886,8 @@ button {
     height: 10%;
     position: fixed;
     /* margin-bottom: 5%; */
+    /* position: fixed; */
+    /* bottom: 10%; */
     width: 100%;
   }
 

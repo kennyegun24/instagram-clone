@@ -15,7 +15,7 @@ const MessageContent = () => {
   }, [mssg])
 
   return (
-    <div>
+    <div className='hmmm'>
       {mssg.message !== 'null' && mssg.message.length !== 0 ? mssg.message.map((mssg) => {
         if (moment(mssg.time).fromNow().includes('minutes') || moment(mssg.time).fromNow().includes('seconds')) {
         } else {
