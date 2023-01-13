@@ -191,25 +191,25 @@ button {
   width: 100%;
   height: 100%;
   justify-content: flex-start;
+  position: relative;
 }
 
+/* 
 .left {
   flex: 0.45;
   border-right: 1px solid #333333;
   background: #000000;
-}
+} */
 
 .right {
   flex: 1;
-  margin-top: 2vh;
-  height: 98vh;
+  height: 100vh;
 }
 
 .center {
   flex: 2;
   overflow: auto;
-  height: 98vh;
-  margin-top: 2vh;
+  height: 100vh;
 }
 
 .msg {
@@ -222,6 +222,12 @@ button {
 
 .msgCnt {
   flex: 1.2;
+  border: 1px solid #5c5a5a;
+  height: 100%;
+}
+
+.profCnt {
+  /* flex: 1.2; */
   border: 1px solid #5c5a5a;
   height: 100%;
 }
@@ -257,7 +263,7 @@ button {
   gap: 0.5rem;
 }
 
-.navUl li {
+.navUl div {
   font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
@@ -266,7 +272,7 @@ button {
   cursor: pointer;
 }
 
-.navUl li:hover {
+.navUl div:hover {
   color: #279bdf;
   background: #292929;
   border-radius: 5rem;
@@ -277,7 +283,7 @@ button {
   color: #279bdf;
 }
 
-.active li {
+.active div {
   background: #292929;
   border-radius: 5rem;
 }
@@ -287,7 +293,7 @@ button {
   height: 100%;
 }
 
-.navUl2 li {
+.navUl2 div {
   font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
@@ -296,14 +302,14 @@ button {
   cursor: pointer;
 }
 
-.navUl2 li:hover {
+.navUl2 div:hover {
   background: #292929;
   border-radius: 5rem;
   transition: 0.2s ease-in-out;
   color: #279bdf;
 }
 
-.navUl2 .signOut {
+.navUl2 .hidee {
   display: none;
 }
 
@@ -384,11 +390,12 @@ button {
 
 .myName {
   text-align: center;
-  border-bottom: 1px solid #5c5a5a;
   padding: 5%;
   font-family: 'poppins', sans-serif;
   font-size: 1.2rem;
   height: 10%;
+  display: flex;
+  justify-content: center;
 }
 
 .msgHead {
@@ -543,7 +550,7 @@ button {
 }
 
 .userPosts {
-  height: 60vh;
+  height: 60%;
   overflow: auto;
 }
 
@@ -558,11 +565,19 @@ button {
 }
 
 .userPostFunc {
+  /* position: fixed; */
+  /* width: 30%; */
+  /* bottom: 0; */
+  /* background-color: #000; */
   display: flex;
   justify-content: center;
-  /* width: 100%; */
   height: 12vh;
   align-items: center;
+}
+
+.func {
+  margin: 0 auto;
+  width: 50%;
 }
 
 .postHover:hover {
@@ -750,12 +765,15 @@ button {
   font-family: 'Poppins', sans-serif;
 }
 
-/* dfhsdsfd */
+.centerAnimation {
+  flex: 2;
+  overflow: hidden;
+  height: 100vh;
+}
 
 .animationCard {
-  /* position: relative; */
   width: 90%;
-  height: 40vh;
+  height: 50%;
   background-color: #111;
   border-radius: 4px;
   padding: 1rem 2rem;
@@ -768,8 +786,6 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  /*justify-content: space-between;
-  align-items: center; */
   width: 100%;
   height: 100%;
 }
@@ -806,8 +822,228 @@ button {
   animation: anim 1.5s infinite;
 }
 
+.hideIcon {
+  display: none;
+}
+
 @keyframes anim {
   to {
     background-position: -100% 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .msgCnt2 {
+    flex: 2;
+    width: 95%;
+    position: relative;
+  }
+
+  .msgBgs {
+    height: 76%;
+  }
+
+  .hideMsg {
+    display: none;
+  }
+
+  .hideIcon {
+    display: block;
+  }
+
+  .msg {
+    width: 100%;
+    border: none;
+    margin: 0;
+    z-index: 2;
+    height: 92vh;
+  }
+
+  .inp {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 14%;
+  }
+
+  .centerAnimation {
+    margin-top: 15%;
+    height: 80vh;
+  }
+
+  .side {
+    z-index: 3;
+    bottom: 0;
+    height: auto;
+    width: 0;
+  }
+
+  .mobileFlex {
+    display: flex;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    background: #000;
+    align-items: center;
+    padding: 2%;
+  }
+
+  .navUl,
+  .navUl2 {
+    align-items: center;
+    display: flex;
+  }
+
+  .navUl {
+    justify-content: space-evenly;
+    width: 100%;
+    background: #000;
+    flex-direction: row;
+  }
+
+  .navUl div li,
+  .navUl2 div li {
+    display: none;
+  }
+
+  .mobileNavDiv {
+    display: block;
+  }
+
+  .headNav {
+    font-size: 25px;
+    background-color: #000;
+    width: 100%;
+    position: fixed;
+    padding: 2%;
+    position: absolute;
+    top: 0;
+    z-index: 2px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .icon {
+    font-size: 20px;
+  }
+
+  .center {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .cent {
+    margin-left: 0;
+  }
+
+  .post {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    margin-bottom: 0.5%;
+  }
+
+  .searchDiv {
+    width: 100%;
+    padding: 5% 0 0 0;
+    margin: 0;
+    height: calc(100vh - 5%);
+  }
+
+  .noUserDiv {
+    display: flex;
+    justify-content: center;
+    height: 75vh;
+    align-items: center;
+  }
+
+  .searchUser {
+    padding: 2%;
+    border-top: 1px solid #4b4a4a;
+    width: 100%;
+    margin-top: 1%;
+  }
+
+  .searchUser:hover {
+    border-radius: 0;
+    background: #000;
+  }
+
+  .search {
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 0;
+  }
+
+  .animationCard {
+    width: 100%;
+  }
+
+  .show {
+    display: none;
+  }
+
+  .profCnt {
+    border: 1px solid #5c5a5a;
+  }
+
+  .userPostFunc {
+    display: none;
+  }
+
+  .userPosts {
+    overflow: auto;
+    margin-bottom: 20%;
+  }
+
+  .postTextFunc {
+    width: 30%;
+  }
+
+  .jsteven {
+    justify-content: space-evenly;
+    padding: 1%;
+  }
+
+  .userProfCont {
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+  }
+
+  .pImg3 {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profNameFlls {
+    gap: 0.5rem;
+  }
+
+  .navUl2 .hidee {
+    display: none;
+    position: absolute;
+    top: -80%;
+    right: 0;
+    background-color: #000;
+    height: fit-content;
+  }
+
+  .navUl2 .showw {
+    display: block;
+  }
+}
+
+@media(max-width: 850px) and (min-width: 761px) {
+  .cent {
+    margin-left: 0;
+  }
+
+  .side {
+    width: 25%;
   }
 }

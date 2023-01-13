@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/context'
 import { DischargeContext } from '../../context/discharge'
 import { PostCountContext } from '../../context/postsCounts'
@@ -19,7 +19,7 @@ const Userprof = () => {
   const { display } = useContext(followingContext)
   const { count } = useContext(PostCountContext)
   const { progress } = useContext(StatusContext)
-
+  const [stat, setStat] = useState(true)
 
   useEffect(() => {
     const updateFollow = async () => {
@@ -36,9 +36,7 @@ const Userprof = () => {
       })
       discharge({ type: "discharge", payload: arr4 })
     }
-    return () => {
-      updateFollow()
-    }
+    updateFollow()
   }, [discharge, currentUser.uid])
 
   useEffect(() => {
@@ -56,6 +54,7 @@ const Userprof = () => {
       })
       display({ type: "follows", payload: arr4 })
     }
+    setStat(false)
     return () => {
       updateFollowing()
     }
@@ -79,23 +78,71 @@ const Userprof = () => {
     }
   }, [dispatch, currentUser.uid])
 
-  return (
-    <div className='userProfCont' style={{ filter: progress.status && 'blur(5px)' }}>
-      <div className="userprofdiv">
-        <div className="profHeader flex gapBg alit">
-          <img src={data.user.photoURL} alt="" className="pImg3" />
+  const body = document.querySelector('body')
+  const headNav = body.querySelector('.headNav')
+  const postHead = body.querySelector('.statProg')
+  if (body && headNav && postHead && window.innerWidth < 767) {
+    headNav.classList.add('show')
+  }
 
-          <div className="profNameFlls flex column gap2">
-            <p>{data.user.displayName}</p>
-            <div className='flex gap2'>
-              <span>{count.post} post</span>
-              <span>{datas.user.length} followers</span>
-              <span>{following.myFollow.length} following</span>
+  return (
+    <div className="statProg">
+      {
+        stat ?
+          (<div className='centerAnimation'>
+            <div className="animationCard">
+              <div className="animationWrapper">
+                <div className="animationImg"></div>
+                <div className="animationHead">
+                  <span>
+                    <p></p>
+                  </span>
+                </div>
+              </div>
+              <div className="animationHead2">
+                <div>
+                  <p></p>
+                </div>
+              </div>
             </div>
-            <p>{data.user.name}</p>
+
+            <div className="animationCard">
+              <div className="animationWrapper">
+                <div className="animationImg"></div>
+                <div className="animationHead">
+                  <span>
+                    <p></p>
+                  </span>
+                </div>
+              </div>
+              <div className="animationHead2">
+                <div>
+                  <p></p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+          )
+          :
+          (<div className='userProfCont' style={{ filter: progress.status && 'blur(5px)' }}>
+            <div className="userprofdiv">
+              <div className="profHeader flex gapBg alit">
+                <img src={currentUser.photoURL} alt="" className="pImg3" />
+
+                <div className="profNameFlls flex column gap2">
+                  <p>{currentUser.displayName}</p>
+                  <div className='flex gap2'>
+                    <span>{count.post} post</span>
+                    <span>{datas.user.length} followers</span>
+                    <span>{following.myFollow.length} following</span>
+                  </div>
+                  <p>{data.user.name}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          )
+      }
     </div>
   )
 }

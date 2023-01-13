@@ -4,17 +4,18 @@ import PostFunc from '../components/profilePosts/PostFunc'
 import ProPosts from '../components/profilePosts/ProPosts'
 
 const UserProfile = () => {
+
   return (
-    <div className='home flex column'>
-      <div className='msgCnt'>
+    <div className='home home2 flex column'>
+      <div className='profCnt'>
         <Userprof />
       </div>
       <div className='userPosts'>
         <ProPosts />
       </div>
-      <div className='userPostFunc'>
-        <div>
-          <PostFunc />
+      <div>
+        <div className='userPostFunc'>
+          <PostFunc className='func' />
         </div>
       </div>
     </div>
