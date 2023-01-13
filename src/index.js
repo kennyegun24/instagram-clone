@@ -9,6 +9,7 @@ import { UpdateFollowing } from './context/updateFollow';
 import { PostCountContextProvider } from './context/postsCounts';
 import { StatusContextProvider } from './context/status';
 import { MessagesContextProvider } from './context/messages';
+import { HideAndShowContextProvider } from './context/HideShow';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,9 +22,11 @@ root.render(
             <PostCountContextProvider>
               <StatusContextProvider>
                 <MessagesContextProvider>
-                  <React.StrictMode>
-                    <App />
-                  </React.StrictMode>
+                  <HideAndShowContextProvider>
+                    <React.StrictMode>
+                      <App />
+                    </React.StrictMode>
+                  </HideAndShowContextProvider>
                 </MessagesContextProvider>
               </StatusContextProvider>
             </PostCountContextProvider>
