@@ -833,6 +833,10 @@ button {
 }
 
 @media (max-width: 760px) {
+  .home {
+    height: 50%;
+  }
+
   .msgCnt2 {
     flex: 2;
     width: 95%;
@@ -840,7 +844,7 @@ button {
   }
 
   .msgBgs {
-    height: 76%;
+    height: 80%;
   }
 
   .hideMsg {
@@ -856,7 +860,7 @@ button {
     border: none;
     margin: 0;
     z-index: 2;
-    height: 92vh;
+    height: 85vh;
   }
 
   .inp {
@@ -878,7 +882,8 @@ button {
     width: 0;
   }
 
-  .mobileFlex {
+  .mobileFlex,
+  .nav {
     display: flex;
     bottom: 0;
     left: 0;
@@ -914,6 +919,7 @@ button {
 
   .mobileNavDiv {
     display: block;
+    height: fit-content;
   }
 
   .headNav {
