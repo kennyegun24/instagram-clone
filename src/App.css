@@ -852,11 +852,11 @@ button {
     flex: 2;
     width: 95%;
     position: relative;
-    height: 95vh;
+    height: 90vh;
   }
 
   .msgBgs {
-    height: 76%;
+    height: 80%;
   }
 
   .hideMsg {
@@ -881,7 +881,7 @@ button {
     align-items: center;
     height: 10%;
     position: fixed;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
     width: 100%;
   }
 
