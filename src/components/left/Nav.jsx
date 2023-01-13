@@ -45,68 +45,66 @@ const Nav = () => {
       </h1>
       <div className='nav'>
         <nav>
-          <div className='mobileFlex'>
 
-            <ul className='navUl flex column'>
+          <ul className='navUl flex column'>
 
-              <NavLink to="/" className='link' onClick={handleSelect}>
-                <div className='flex alit'>
-                  <FaHome className='icon' />
-                  <li>
-                    Home
-                  </li>
-                </div>
-              </NavLink>
-
-              <NavLink to='/search' className='link' onClick={handleSelect}>
-                <div className='flex alit'>
-                  <FaSearch className='icon' />
-                  <li>
-                    Search
-                  </li>
-                </div>
-              </NavLink>
-
-              <div className='flex alit' onClick={handleSelect}>
-                <FaCompass className='icon' />
+            <NavLink to="/" className='link' onClick={handleSelect}>
+              <div className='flex alit'>
+                <FaHome className='icon' />
                 <li>
-                  Explore
+                  Home
                 </li>
               </div>
+            </NavLink>
 
-              <NavLink to='/messages' className='link'>
-                <div className='flex alit'>
-                  <FaRegPaperPlane className='icon' />
-                  <li>
-                    Messages
-                  </li>
-                </div>
-              </NavLink>
+            <NavLink to='/search' className='link' onClick={handleSelect}>
+              <div className='flex alit'>
+                <FaSearch className='icon' />
+                <li>
+                  Search
+                </li>
+              </div>
+            </NavLink>
 
-              <NavLink to={`/${currentUser.uid}`} onClick={handleSelect} className='link' >
-                <div className='flex alit'>
-                  <img src={currentUser.photoURL} className='pImg' alt="" />
-                  <li onClick={click}>
-                    Profile
-                  </li>
-                </div>
-              </NavLink>
-              <ul className='navUl2'>
-                <div className='flex alit' onClick={openUp}>
-                  <FaBars className='icon' />
-                  <li>
-                    More
-                  </li>
-                </div>
-                <div className='flex alit hidee' onClick={signout} >
-                  <FaPowerOff className='icon' />
-                  <li className='signOut' >
-                    Sign Out
-                  </li>
-                </div>
-              </ul>
+            <div className='flex alit' onClick={handleSelect}>
+              <FaCompass className='icon' />
+              <li>
+                Explore
+              </li>
+            </div>
+
+            <NavLink to='/messages' className='link'>
+              <div className='flex alit'>
+                <FaRegPaperPlane className='icon' />
+                <li>
+                  Messages
+                </li>
+              </div>
+            </NavLink>
+
+            <NavLink to={`/${currentUser.uid}`} onClick={handleSelect} className='link' >
+              <div className='flex alit'>
+                <img src={currentUser.photoURL} className='pImg' alt="" />
+                <li onClick={click}>
+                  Profile
+                </li>
+              </div>
+            </NavLink>
+            <ul className='navUl2'>
+              <div className='flex alit' onClick={openUp}>
+                <FaBars className='icon' />
+                <li>
+                  More
+                </li>
+              </div>
+              <div className='flex alit hidee' onClick={signout} >
+                <FaPowerOff className='icon' />
+                <li className='signOut' >
+                  Sign Out
+                </li>
+              </div>
             </ul>
-          </div>
+          </ul>
         </nav>
       </div>
     </div>

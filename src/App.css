@@ -833,10 +833,6 @@ button {
 }
 
 @media (max-width: 760px) {
-  .home {
-    height: 50%;
-  }
-
   .msgCnt2 {
     flex: 2;
     width: 95%;
@@ -844,7 +840,7 @@ button {
   }
 
   .msgBgs {
-    height: 80%;
+    height: 76%;
   }
 
   .hideMsg {
@@ -860,7 +856,7 @@ button {
     border: none;
     margin: 0;
     z-index: 2;
-    height: 85vh;
+    height: 92vh;
   }
 
   .inp {
@@ -868,6 +864,9 @@ button {
     display: flex;
     align-items: center;
     height: 10%;
+    position: fixed;
+    margin-bottom: 5%;
+    width: 100%;
   }
 
   .centerAnimation {
@@ -882,17 +881,18 @@ button {
     width: 0;
   }
 
-  .mobileFlex,
+  .navUl,
   .nav {
     display: flex;
     bottom: 0;
     left: 0;
     width: 100%;
-    position: absolute;
+    position: fixed;
     background: #000;
     align-items: center;
     padding: 2%;
     top: auto;
+    height: 10%;
   }
 
   .nav {
