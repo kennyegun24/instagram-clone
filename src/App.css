@@ -863,7 +863,7 @@ button {
     justify-content: center;
     display: flex;
     align-items: center;
-    height: 14%;
+    height: 10%;
   }
 
   .centerAnimation {
@@ -887,6 +887,11 @@ button {
     background: #000;
     align-items: center;
     padding: 2%;
+    top: auto;
+  }
+
+  .nav {
+    height: fit-content;
   }
 
   .navUl,
