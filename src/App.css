@@ -885,6 +885,7 @@ button {
   .nav {
     display: flex;
     bottom: 0;
+    margin-bottom: 0;
     left: 0;
     width: 100%;
     position: fixed;
@@ -910,6 +911,7 @@ button {
     width: 100%;
     background: #000;
     flex-direction: row;
+    line-height: 0;
   }
 
   .navUl div li,
