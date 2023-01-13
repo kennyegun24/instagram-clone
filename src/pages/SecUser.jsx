@@ -36,9 +36,7 @@ const SecUser = () => {
       })
       discharge({ type: "discharge", payload: arr4 })
     }
-    return () => {
-      updateFollow()
-    }
+    updateFollow()
   }, [discharge, data.user.uid])
 
   useEffect(() => {

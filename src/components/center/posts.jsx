@@ -1,5 +1,5 @@
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { FaComment, FaEllipsisH, FaHeart, FaPaperPlane } from 'react-icons/fa';
 import { AuthContext } from '../../context/context';
 import { PostCountContext } from '../../context/postsCounts';
@@ -13,83 +13,77 @@ const Posts = () => {
   // const { data } = useContext(Chatc)
   const { dischargePosts } = useContext(PostCountContext)
 
-  useEffect(() => {
-    const getArray1 = async () => {
-      let arr2 = [];
-      const snapshotPromise = new Promise((resolve) => {
-        onSnapshot(doc(db, "posts", currentUser.uid), (doc) => {
+  const getArray1 = useCallback(async () => {
+    let arr2 = [];
+    const snapshotPromise = new Promise((resolve) => {
+      onSnapshot(doc(db, "posts", currentUser.uid), (doc) => {
+        arr2.push(doc.data().posts);
+        resolve();
+        const arr = []
+        const postsLength = doc.data().posts
+        postsLength.forEach(({ id }) => {
+          arr.push(id)
+        })
+        dischargePosts({ type: 'countposts', payload: arr.length })
+      });
+    });
+
+    await snapshotPromise;
+    return arr2;
+  }, [currentUser.uid, dischargePosts])
+
+  const getArray2 = useCallback(async () => {
+    const res = await getDoc(doc(db, "following", currentUser.uid));
+    const response = res.data();
+    const follow = response.follow;
+    let arr = [];
+    arr.push(follow);
+    const arr3 = arr.flat();
+    let arr4 = [];
+    arr3.forEach(({ id }) => {
+      arr4.push(id);
+    });
+    let arr2 = [];
+
+    const snapshotPromises = arr4.map((id) => {
+      return new Promise((resolve) => {
+        onSnapshot(doc(db, "posts", id), (doc) => {
           arr2.push(doc.data().posts);
           resolve();
-          const arr = []
-          const postsLength = doc.data().posts
-          postsLength.forEach(({ id }) => {
-            arr.push(id)
-          })
-          dischargePosts({ type: 'countposts', payload: arr.length })
         });
       });
+    });
 
-      await snapshotPromise;
-      return arr2;
-    }
+    await Promise.all(snapshotPromises);
 
-    const getArray2 = async () => {
-      const res = await getDoc(doc(db, "following", currentUser.uid));
-      const response = res.data();
-      const follow = response.follow;
-      let arr = [];
-      arr.push(follow);
-      const arr3 = arr.flat();
-      let arr4 = [];
-      arr3.forEach(({ id }) => {
-        arr4.push(id);
-      });
-      let arr2 = [];
+    return arr2;
+  }, [currentUser.uid])
 
-      const snapshotPromises = arr4.map((id) => {
-        return new Promise((resolve) => {
-          onSnapshot(doc(db, "posts", id), (doc) => {
-            arr2.push(doc.data().posts);
-            resolve();
-          });
-        });
-      });
 
-      await Promise.all(snapshotPromises);
-      return arr2;
-    }
+  const joinArrays = useCallback(async () => {
+    const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
+    const combinedArray = [...array1, ...array2];
+    setPosts(combinedArray.flat());
+    setProg(false)
+  }, [getArray1, getArray2])
 
-    const joinArrays = async () => {
-      const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
-      const combinedArray = [...array1, ...array2];
-      setPosts(combinedArray.flat());
-      setProg(false)
-    }
+  useEffect(() => {
     joinArrays()
+    console.log(joinArrays())
+  }, [joinArrays, getArray1, getArray2])
 
-  }, [currentUser.uid, dischargePosts, finalPosts])
+  const body = document.querySelector('body')
+  const headNav = body.querySelector('.headNav')
+  const postHead = body.querySelector('.centerAnimation')
+  if (body && postHead && window.innerWidth < 767) {
+    headNav.classList.remove('show')
+  }
 
   return (
     <div>
       {
         prog ? (
-          <div className='center'>
-            <div className="animationCard">
-              <div className="animationWrapper">
-                <div className="animationImg"></div>
-                <div className="animationHead">
-                  <span>
-                    <p></p>
-                  </span>
-                </div>
-              </div>
-              <div className="animationHead2">
-                <div>
-                  <p></p>
-                </div>
-              </div>
-            </div>
-
+          <div className='centerAnimation'>
             <div className="animationCard">
               <div className="animationWrapper">
                 <div className="animationImg"></div>
@@ -123,14 +117,14 @@ const Posts = () => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className='showPost'>
             {finalPosts.length === 0 &&
               <div className='centertxt'>
                 <p>No posts yet...</p>
               </div>
             }
 
-            <div>
+            <div className='showPost'>
               {
                 finalPosts.length !== 0 && finalPosts.sort((a, b) => b.date - a.date).map((images) => {
                   return (

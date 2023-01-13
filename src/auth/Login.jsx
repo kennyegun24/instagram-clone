@@ -32,7 +32,7 @@ const Login = () => {
             <input type="email" placeholder='Enter email address' />
             <input type="password" placeholder='Password' />
             <button className='signUp' type='submit'>Log in</button>
-            {err && <p>An error occured</p>}
+            {err && <p>Email or password incorrect!</p>}
           </form>
         </div>
 

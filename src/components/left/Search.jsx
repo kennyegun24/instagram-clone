@@ -43,6 +43,12 @@ const Search = () => {
     handleSearch()
   }
 
+  const body = document.querySelector('body')
+  const headNav = body.querySelector('.headNav')
+  const postHead = body.querySelector('.searchDiv')
+  if (body && postHead && window.innerWidth < 767) {
+    headNav.classList.add('show')
+  }
 
   return (
     <div className='searchDiv'>
@@ -54,7 +60,6 @@ const Search = () => {
           onChange={(e) => setUseranme(e.target.value)}
           placeholder='search for a user...' />
       </form>
-
 
       {user.length !== 0 ? (
         user.flat().map((map) => {
@@ -73,7 +78,10 @@ const Search = () => {
 
           )
         })) :
-        <p>No user found...</p>
+        <div className="noUserDiv">
+
+          <p className='noUser'>No user found...</p>
+        </div>
       }
     </div>
   )
