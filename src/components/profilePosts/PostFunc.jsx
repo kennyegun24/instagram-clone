@@ -114,7 +114,7 @@ const PostFunc = () => {
         }
         {err && setTimeout(() => { setErr(false); }, 4000) && <p className='poppins' style={{ color: 'red' }}>Include an Image to post</p>}
 
-        <div className='flex alit gap' >
+        <div className='flex alit gap jsteven' >
           <input onChange={e => setImg(e.target.files[0])} type="file" accept="image/jpeg, image/png, image/gif, image/jfif" id="postImage" style={{ display: "none" }} required />
           <input onChange={e => setTxt(e.target.value)} className='postTextFunc' value={text} placeholder='Post caption...' />
           <label htmlFor="postImage">

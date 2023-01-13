@@ -17,13 +17,8 @@ const MessageContent = () => {
   return (
     <div>
       {mssg.message !== 'null' && mssg.message.length !== 0 ? mssg.message.map((mssg) => {
-
-        console.log(mssg.time)
-        console.log(moment(mssg.time).fromNow())
         if (moment(mssg.time).fromNow().includes('minutes') || moment(mssg.time).fromNow().includes('seconds')) {
-          console.log('yes')
         } else {
-          console.log('not')
         }
 
         const checkTimeFormat = moment(mssg.time).fromNow().includes('minutes') || moment(mssg.time).fromNow().includes('seconds') || moment(mssg.time).fromNow().includes('minute')

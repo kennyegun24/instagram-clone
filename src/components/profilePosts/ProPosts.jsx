@@ -36,7 +36,7 @@ const ProPosts = () => {
           <p>No posts yet...</p>
         </div>
       }
-      <Row gutters={[32, 32]} style={{ filter: progress.status && 'blur(5px)' }}>
+      <Row className='rub' gutters={[32, 32]} style={{ filter: progress.status && 'blur(5px)' }}>
         {images && images.sort((a, b) => b.date - a.date).map((images) => (
           <Col xs={24} sm={12} lg={6} key={images.id}>
             <PostsProfileDisplay images={images} />
