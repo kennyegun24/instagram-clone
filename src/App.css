@@ -253,13 +253,13 @@ button {
   margin-bottom: 2rem;
 }
 
-.navUl,
+/* .navUl,
 .navUl2 {
   line-height: 50px;
   font-size: 16px;
-}
+} */
 
-.navUl {
+/* .navUl {
   gap: 0.5rem;
 }
 
@@ -270,14 +270,14 @@ button {
   gap: 1rem;
   padding: 0.5rem;
   cursor: pointer;
-}
+} */
 
-.navUl div:hover {
+/* .navUl div:hover {
   color: #279bdf;
   background: #292929;
   border-radius: 5rem;
   transition: 0.2s ease-in-out;
-}
+} */
 
 .active {
   color: #279bdf;
@@ -288,10 +288,10 @@ button {
   border-radius: 5rem;
 }
 
-.nav {
+/* .nav {
   padding: 2rem 1.5rem;
   height: 100%;
-}
+} */
 
 .navUl2 div {
   font-family: 'Poppins', sans-serif;
@@ -833,14 +833,25 @@ button {
 }
 
 @media (max-width: 760px) {
+  .navUl {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    bottom: 0;
+    background: #000;
+  }
+
+  .navUl li {
+    display: none;
+  }
+
   .msgCnt2 {
     flex: 2;
     width: 95%;
     position: relative;
-  }
-
-  .home {
-    margin-bottom: 10%;
   }
 
   .msgBgs {
@@ -885,8 +896,7 @@ button {
     width: 0;
   }
 
-  .navUl,
-  .nav {
+  /* .navUl {
     display: flex;
     bottom: 0;
     margin-bottom: 0;
@@ -898,15 +908,15 @@ button {
     padding: 2%;
     top: auto;
     height: 10%;
-  }
+  } */
 
-  .navUl,
+  /* .navUl,
   .navUl2 {
     align-items: center;
     display: flex;
-  }
+  } */
 
-  .navUl {
+  /* .navUl {
     justify-content: space-evenly;
     width: 100%;
     background: #000;
@@ -917,12 +927,12 @@ button {
   .navUl div li,
   .navUl2 div li {
     display: none;
-  }
+  } */
 
-  .mobileNavDiv {
+  /* .mobileNavDiv {
     display: block;
     height: fit-content;
-  }
+  } */
 
   .headNav {
     font-size: 25px;
