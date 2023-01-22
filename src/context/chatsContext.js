@@ -5,22 +5,22 @@ import { AuthContext } from "./context";
 export const ChatContext = createContext()
 
 // FUCTION TO WRAP AROOUND THE APP TO CHECK FOR THE Other user
-export const ChatContextProvider = ({children}) => {
-const {currentUser} = useContext(AuthContext)
+export const ChatContextProvider = ({ children }) => {
+  const { currentUser } = useContext(AuthContext)
 
   const INITIAL_STATE = {
-    chatId:"null",
-    user:{},
+    chatId: "null",
+    user: {},
   }
 
   const chatReducer = (state, action) => {
-    switch(action.type){
+    switch (action.type) {
       case "CHANGE_USER":
-        return{
+        return {
           user: action.payload,
-          chatId: currentUser.uid > action.payload.uid 
-          ? currentUser.uid + action.payload.uid
-          : action.payload.uid + currentUser.uid
+          chatId: currentUser.uid > action.payload.uid
+            ? currentUser.uid + action.payload.uid
+            : action.payload.uid + currentUser.uid
         }
       default:
         return state
@@ -30,8 +30,8 @@ const {currentUser} = useContext(AuthContext)
   const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE)
 
   return (
-      <ChatContext.Provider value={{ data:state, dispatch}}>
+    <ChatContext.Provider value={{ data: state, dispatch }}>
       {children}
-  </ChatContext.Provider>
+    </ChatContext.Provider>
   );
 };

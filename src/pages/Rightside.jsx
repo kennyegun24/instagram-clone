@@ -152,9 +152,9 @@ const Rightside = () => {
 
           <div className='flex alit column gap jstCnt' style={{ filter: progress.status && 'blur(5px)', height: '55vh', width: '100%' }}>
             <div className="objTextImg flex gap" style={{ width: '100%', marginTop: '5vh', border: '1px solid #fff', borderRadius: '5px', padding: '2%', height: '12vh', alignItems: 'center' }}>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', width: '100%' }}>
                 <div style={{ order: '1', width: '60px', height: '60px', opacity: !img && '0.5' }}>{<img src={img ? URL.createObjectURL(img) : nullImg} alt='' className='imgObj2' />}</div>
-                <div style={{ order: '2', width: '100%' }}>{text && <p className='txtObj'>{text.substring(0, 40) + '...'}</p>}</div>
+                <div style={{ order: '2', width: '150px', maxWidth: '100%', overflow: 'auto' }}>{text && <p className='txtObj'>{text.substring(0, 40) + '...'}</p>}</div>
               </div>
             </div>
             <input onChange={e => setImg(e.target.files[0])} type="file" accept="image/jpeg, image/png, image/gif, image/jfif" id="postImage" style={{ display: "none" }} required />

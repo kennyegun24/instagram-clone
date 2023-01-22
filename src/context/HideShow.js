@@ -8,6 +8,7 @@ export const HideAndShowContextProvider = ({ children }) => {
 
     const INITIAL_STATE = {
         prop: false,
+        hidePost: false
     }
 
     const HideShowReducer = (state, action) => {
@@ -15,6 +16,10 @@ export const HideAndShowContextProvider = ({ children }) => {
             case "hide":
                 return {
                     prop: action.payload,
+                }
+            case "hidePost":
+                return {
+                    hidePost: action.payload,
                 }
             default:
                 return state;
