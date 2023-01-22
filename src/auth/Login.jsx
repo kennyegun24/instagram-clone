@@ -19,6 +19,7 @@ const Login = () => {
 
     } catch (err) {
       setErr(true)
+      setTimeout(() => { err && setErr(false) }, 5000)
     }
 
   }
