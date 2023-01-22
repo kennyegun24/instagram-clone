@@ -194,13 +194,6 @@ button {
   position: relative;
 }
 
-/* 
-.left {
-  flex: 0.45;
-  border-right: 1px solid #333333;
-  background: #000000;
-} */
-
 .right {
   flex: 1;
   height: 100vh;
@@ -253,31 +246,31 @@ button {
   margin-bottom: 2rem;
 }
 
-/* .navUl,
+.navUl,
 .navUl2 {
   line-height: 50px;
   font-size: 16px;
-} */
+}
 
-/* .navUl {
+.navUl {
   gap: 0.5rem;
 }
 
 .navUl div {
   font-family: 'Poppins', sans-serif;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
   cursor: pointer;
-} */
+}
 
-/* .navUl div:hover {
+.navUl div:hover {
   color: #279bdf;
   background: #292929;
   border-radius: 5rem;
   transition: 0.2s ease-in-out;
-} */
+}
 
 .active {
   color: #279bdf;
@@ -288,10 +281,9 @@ button {
   border-radius: 5rem;
 }
 
-/* .nav {
+.nav {
   padding: 2rem 1.5rem;
-  height: 100%;
-} */
+}
 
 .navUl2 div {
   font-family: 'Poppins', sans-serif;
@@ -381,18 +373,11 @@ button {
   padding: 1%;
 }
 
-/* .msgCnts::-webkit-scrollbar {
-  color: #447eeb;
-  background-color: #279bdf;
-  background: #279bdf;
-  width: 0.5rem;
-} */
-
 .myName {
   text-align: center;
   padding: 5%;
   font-family: 'poppins', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   height: 10%;
   display: flex;
   justify-content: center;
@@ -426,19 +411,6 @@ button {
 .msgBg::-webkit-scrollbar-thumb,
 .msgBgs::-webkit-scrollbar-thumb {
   background-color: white;
-}
-
-.inp {
-  /* height: 10%; */
-}
-
-.inp div {
-  /* display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  height: 100%;
-  justify-content: center; */
 }
 
 .form {
@@ -565,10 +537,6 @@ button {
 }
 
 .userPostFunc {
-  /* position: fixed; */
-  /* width: 30%; */
-  /* bottom: 0; */
-  /* background-color: #000; */
   display: flex;
   justify-content: center;
   height: 12vh;
@@ -753,16 +721,29 @@ button {
   object-fit: cover;
 }
 
-.imgObj2 {
+.imgObj2,
+.imgObj3 {
   width: 60px;
   height: 60px;
   object-fit: cover;
 }
 
+.imgObj3 {
+  width: 100px;
+  height: 100px;
+  opacity: 0.7;
+}
+
 .txtObj {
-  max-width: 100%;
-  height: max-content;
+  overflow: auto;
   font-family: 'Poppins', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  font-size: 18px;
+}
+
+.txtObj::-webkit-scrollbar {
+  display: none;
 }
 
 .centerAnimation {
@@ -832,7 +813,45 @@ button {
   }
 }
 
+.PostFile {
+  display: none;
+}
+
 @media (max-width: 760px) {
+  .PostFile {
+    display: flex;
+    position: absolute;
+    background: #fff;
+    bottom: 30px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .iconPlus {
+    height: 50px;
+    width: 50px;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+  }
+
+  .navUl div:nth-child(4) {
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .navUl div:nth-child(4):hover {
+    background-color: #279bdf;
+    border-radius: 50%;
+    border: 1px solid #279bdf;
+  }
+
+  .navUl {
+    position: relative;
+  }
+
   .hmmm {
     max-height: 10vh;
   }
@@ -846,13 +865,13 @@ button {
     width: 100%;
     bottom: 0;
     background: #000;
+    line-height: 0;
+    height: 50px;
   }
 
   .navUl li {
     display: none;
   }
-
-
 
   .msgBgs {
     height: 80%;
@@ -886,9 +905,6 @@ button {
     display: block;
     align-items: center;
     height: 10%;
-    /* margin-bottom: 5%; */
-    /* position: fixed; */
-    /* bottom: 10%; */
     width: 100%;
   }
 
@@ -904,53 +920,17 @@ button {
     width: 0;
   }
 
-  /* .navUl {
-    display: flex;
-    bottom: 0;
-    margin-bottom: 0;
-    left: 0;
-    width: 100%;
-    position: fixed;
-    background: #000;
-    align-items: center;
-    padding: 2%;
-    top: auto;
-    height: 10%;
-  } */
-
-  /* .navUl,
-  .navUl2 {
-    align-items: center;
-    display: flex;
-  } */
-
-  /* .navUl {
-    justify-content: space-evenly;
-    width: 100%;
-    background: #000;
-    flex-direction: row;
-    line-height: 0;
-  }
-
-  .navUl div li,
-  .navUl2 div li {
-    display: none;
-  } */
-
-  /* .mobileNavDiv {
-    display: block;
-    height: fit-content;
-  } */
-
   .headNav {
     font-size: 25px;
     background-color: #000;
     width: 100%;
     position: fixed;
     padding: 2%;
-    position: absolute;
     top: 0;
     z-index: 2px;
+
+    color: #fff;
+    left: 0;
   }
 
   .right {
