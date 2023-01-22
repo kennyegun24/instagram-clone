@@ -69,7 +69,7 @@ const Nav = () => {
     handleSelect()
   }
 
-  const [showMobile, setShowMobile] = useState(false)
+  // const [showMobile, setShowMobile] = useState(false)
 
   const showPost = () => {
     // setShowMobile(true)
@@ -79,7 +79,7 @@ const Nav = () => {
   return (
     <div>
       {hide.hidePost && <MobilePost />}
-      <div className={`flex column alit mobileNavDiv ${showMobile && 'hide'}`}>
+      <div className={`flex column alit mobileNavDiv `}>
         <h1 className='headNav'>
           Kenstagram
         </h1>
