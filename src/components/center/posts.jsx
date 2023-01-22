@@ -13,7 +13,7 @@ const Posts = () => {
   // const { data } = useContext(Chatc)
   const { dischargePosts } = useContext(PostCountContext)
 
-  const getArray1 = useCallback(async () => {
+  const userPosts = useCallback(async () => {
     let arr2 = [];
     const snapshotPromise = new Promise((resolve) => {
       onSnapshot(doc(db, "posts", currentUser.uid), (doc) => {
@@ -32,7 +32,7 @@ const Posts = () => {
     return arr2;
   }, [currentUser.uid, dischargePosts])
 
-  const getArray2 = useCallback(async () => {
+  const otherUsersPosts = useCallback(async () => {
     const res = await getDoc(doc(db, "following", currentUser.uid));
     const response = res.data();
     const follow = response.follow;
@@ -60,17 +60,16 @@ const Posts = () => {
   }, [currentUser.uid])
 
 
-  const joinArrays = useCallback(async () => {
-    const [array1, array2] = await Promise.all([getArray1(), getArray2()]);
+  const allPosts = useCallback(async () => {
+    const [array1, array2] = await Promise.all([userPosts(), otherUsersPosts()]);
     const combinedArray = [...array1, ...array2];
     setPosts(combinedArray.flat());
     setProg(false)
-  }, [getArray1, getArray2])
+  }, [userPosts, otherUsersPosts])
 
   useEffect(() => {
-    joinArrays()
-    console.log(joinArrays())
-  }, [joinArrays, getArray1, getArray2])
+    allPosts()
+  }, [allPosts, userPosts, otherUsersPosts])
 
   const body = document.querySelector('body')
   const headNav = body.querySelector('.headNav')
