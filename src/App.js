@@ -35,7 +35,7 @@ function App() {
                     index
                     element={<Homepage />}
                   />
-                  <Route path='messages' element={currentUser ? <Messages /> : <Login />} />
+                  <Route path='messages' element={<Messages />} />
                   <Route path='search' element={<Search />} />
                   <Route path={currentUser ? `${currentUser.uid}` : '/'} element={<UserProfile />} />
                   <Route path={data ? `${data.user.uid}` : '/'} element={<SecUserProfile />} />
