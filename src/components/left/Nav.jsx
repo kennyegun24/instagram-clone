@@ -1,17 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { FaBars, FaCompass, FaHome, FaPowerOff, FaRegPaperPlane, FaSearch } from 'react-icons/fa'
+import { FaBars, FaCompass, FaHome, FaPlusCircle, FaPowerOff, FaRegPaperPlane, FaSearch } from 'react-icons/fa'
 import { AuthContext } from '../../context/context'
 import { signOut } from 'firebase/auth'
 import { auth, db } from '../../firebase'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { ChatContext } from '../../context/chatsContext'
 import { MessagesContext } from '../../context/messages'
+import { HideAndShow } from '../../context/HideShow'
+import MobilePost from './MobilePost'
 
 const Nav = () => {
   const { currentUser } = useContext(AuthContext)
   const { dispatch } = useContext(ChatContext)
   const { dischargeMessages } = useContext(MessagesContext)
+  const [hidePostIcon, setHidePostIcon] = useState(true)
 
   const navigate = useNavigate()
 
@@ -22,9 +25,37 @@ const Nav = () => {
     }
   }
 
+  const { hideShow } = useContext(HideAndShow)
+  const { hide } = useContext(HideAndShow)
+
+  const [Hide, setHide] = useState(true)
+  const remHide = () => {
+    if (Hide === true) {
+      setHide(false)
+      hideShow({ type: 'hide', payload: false })
+    }
+    else {
+      setHide(true)
+      hideShow({ type: 'hide', payload: true })
+    }
+  }
+
+  const hideIcons = () => {
+    hidePostIcon && setHidePostIcon(false)
+  }
+
   const handleSelect = () => {
     dispatch({ type: "CHANGE_USER", payload: 'null' })
     dischargeMessages({ type: 'messages', payload: 'null' })
+    hidePostIcon && setHidePostIcon(false)
+    remHide()
+  }
+
+  const handleIconSelect = () => {
+    !hidePostIcon && setHidePostIcon(true)
+    dispatch({ type: "CHANGE_USER", payload: 'null' })
+    dischargeMessages({ type: 'messages', payload: 'null' })
+    remHide()
   }
 
   const openUp = () => {
@@ -38,74 +69,90 @@ const Nav = () => {
     handleSelect()
   }
 
+  const [showMobile, setShowMobile] = useState(false)
+
+  const showPost = () => {
+    // setShowMobile(true)
+    hideShow({ type: 'hidePost', payload: true })
+  }
+
   return (
-    <div className='flex column alit mobileNavDiv'>
-      <h1 className='headNav'>
-        Kenstagram
-      </h1>
-      <nav className='nav'>
+    <div>
+      {hide.hidePost && <MobilePost />}
+      <div className={`flex column alit mobileNavDiv ${showMobile && 'hide'}`}>
+        <h1 className='headNav'>
+          Kenstagram
+        </h1>
+        <nav className='nav'>
 
-        <ul className='navUl flex column'>
+          <ul className='navUl flex column'>
 
-          <NavLink to="/" className='link' onClick={handleSelect}>
-            <div className='flex alit'>
-              <FaHome className='icon' />
+            <NavLink to="/" className='link' onClick={handleIconSelect}>
+              <div className='flex alit'>
+                <FaHome className='icon' />
+                <li>
+                  Home
+                </li>
+              </div>
+            </NavLink>
+
+            <NavLink to='/search' className='link' onClick={handleSelect}>
+              <div className='flex alit'>
+                <FaSearch className='icon' />
+                <li>
+                  Search
+                </li>
+              </div>
+            </NavLink>
+
+            <div className='flex alit' onClick={handleSelect}>
+              <FaCompass className='icon' />
               <li>
-                Home
+                Explore
               </li>
             </div>
-          </NavLink>
 
-          <NavLink to='/search' className='link' onClick={handleSelect}>
-            <div className='flex alit'>
-              <FaSearch className='icon' />
-              <li>
-                Search
-              </li>
+            <div className={hidePostIcon ? 'PostFile' : 'hide'}>
+              {/* <input type="file" id='file' style={{ display: 'none' }} /> */}
+              {/* <label htmlFor="file" className='iconLabel'> */}
+              <FaPlusCircle className='iconPlus' onClick={showPost} />
+              {/* </label> */}
             </div>
-          </NavLink>
 
-          <div className='flex alit' onClick={handleSelect}>
-            <FaCompass className='icon' />
-            <li>
-              Explore
-            </li>
-          </div>
+            <NavLink to='/messages' className='link'>
+              <div className='flex alit' onClick={hideIcons}>
+                <FaRegPaperPlane className='icon' />
+                <li>
+                  Messages
+                </li>
+              </div>
+            </NavLink>
 
-          <NavLink to='/messages' className='link'>
-            <div className='flex alit'>
-              <FaRegPaperPlane className='icon' />
-              <li>
-                Messages
-              </li>
-            </div>
-          </NavLink>
-
-          <NavLink to={`/${currentUser.uid}`} onClick={handleSelect} className='link' >
-            <div className='flex alit'>
-              <img src={currentUser.photoURL} className='pImg' alt="" />
-              <li onClick={click}>
-                Profile
-              </li>
-            </div>
-          </NavLink>
-          <ul className='navUl2'>
-            <div className='flex alit' onClick={openUp}>
-              <FaBars className='icon' />
-              <li>
-                More
-              </li>
-            </div>
-            <div className='flex alit hidee' onClick={signout} >
-              <FaPowerOff className='icon' />
-              <li className='signOut' >
-                Sign Out
-              </li>
-            </div>
+            <NavLink to={`/${currentUser.uid}`} onClick={handleIconSelect} className='link' >
+              <div className='flex alit'>
+                <img src={currentUser.photoURL} className='pImg' alt="" />
+                <li onClick={click}>
+                  Profile
+                </li>
+              </div>
+            </NavLink>
+            <ul className='navUl2'>
+              <div className='flex alit' onClick={openUp}>
+                <FaBars className='icon' />
+                <li>
+                  More
+                </li>
+              </div>
+              <div className='flex alit hidee' onClick={signout} >
+                <FaPowerOff className='icon' />
+                <li className='signOut' >
+                  Sign Out
+                </li>
+              </div>
+            </ul>
           </ul>
-        </ul>
-      </nav>
-    </div>
+        </nav>
+      </div></div>
   )
 }
 
