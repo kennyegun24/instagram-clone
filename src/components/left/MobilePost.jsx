@@ -121,7 +121,7 @@ const MobilePost = () => {
 
             <div style={{ height: '100%', zIndex: '999', background: '#000', width: '100%', position: 'fixed', padding: '1rem', filter: status && 'blur(2px)' }}>
                 <div>
-                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '20px' }} onClick={remove}>
+                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '20px', width: 'fit-content' }} onClick={remove}>
                         <FaArrowLeft />
                         <p style={{ opacity: '0.7' }}>Back to homepage</p>
                     </div>

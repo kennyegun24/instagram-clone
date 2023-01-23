@@ -87,25 +87,25 @@ const Nav = () => {
 
           <ul className='navUl flex column'>
 
-            <NavLink to="/" className='link' onClick={handleIconSelect}>
-              <div className='flex alit'>
+            <div className=''>
+              <NavLink to="/" className='flex alit gap link' onClick={handleIconSelect}>
                 <FaHome className='icon' />
                 <li>
                   Home
                 </li>
-              </div>
-            </NavLink>
+              </NavLink>
+            </div>
 
-            <NavLink to='/search' className='link' onClick={handleSelect}>
-              <div className='flex alit'>
+            <div className=''>
+              <NavLink to='/search' className='flex gap alit link' onClick={handleSelect}>
                 <FaSearch className='icon' />
                 <li>
                   Search
                 </li>
-              </div>
-            </NavLink>
+              </NavLink>
+            </div>
 
-            <div className='flex alit' onClick={handleSelect}>
+            <div className='flex gap alit' onClick={handleSelect}>
               <FaCompass className='icon' />
               <li>
                 Explore
@@ -115,27 +115,30 @@ const Nav = () => {
             <div className={hidePostIcon ? 'PostFile' : 'hide'}>
               {/* <input type="file" id='file' style={{ display: 'none' }} /> */}
               {/* <label htmlFor="file" className='iconLabel'> */}
-              <FaPlusCircle className='iconPlus' onClick={showPost} />
-              {/* </label> */}
+              <div className='iconPluss'>
+
+                <FaPlusCircle className='iconPlus' aria-hidden={true} onClick={showPost} />
+                {/* </label> */}
+              </div>
             </div>
 
-            <NavLink to='/messages' className='link'>
-              <div className='flex alit' onClick={hideIcons}>
+            <div className='' onClick={hideIcons}>
+              <NavLink to='/messages' className='link gap flex alit'>
                 <FaRegPaperPlane className='icon' />
                 <li>
                   Messages
                 </li>
-              </div>
-            </NavLink>
+              </NavLink>
+            </div>
 
-            <NavLink to={`/${currentUser.uid}`} onClick={handleIconSelect} className='link' >
-              <div className='flex alit'>
+            <div className=''>
+              <NavLink to={`/${currentUser.uid}`} onClick={handleIconSelect} className='link flex alit gap' >
                 <img src={currentUser.photoURL} className='pImg' alt="" />
                 <li onClick={click}>
                   Profile
                 </li>
-              </div>
-            </NavLink>
+              </NavLink>
+            </div>
             <ul className='navUl2'>
               <div className='flex alit' onClick={openUp}>
                 <FaBars className='icon' />

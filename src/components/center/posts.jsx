@@ -145,7 +145,7 @@ const Posts = () => {
                       <div className='postText'>
                         {images.text &&
                           <div className='flex alit gapSm2 marginBtm'>
-                            <img className='postDisplayImg' src={images.img} alt=''></img>
+                            <img className='postDisplayImg' src={currentUser.photoURL} alt=''></img>
                             <p className='poppins fntMd'>{images.text}</p>
                           </div>
                         }
